@@ -1,7 +1,7 @@
 #ifndef POINT_H
 #define POINT_H
 
-#include "../vec3.h"
+#include "vec3.h"
 
 class Point
 {

@@ -1,8 +1,8 @@
 #ifndef FIGURE_H
 #define FIGURE_H
 
-#include "../vec3.h"
-#include "../point3d.h"
+#include "vec3.h"
+#include "point3d.h"
 #include "FigureFace.h"
 #include "Point.h"
 #include <deque>
@@ -15,7 +15,7 @@ protected:
 	vec3 * scale;
 	vec3 * translation;
 	point3d * couleur;
-    std::deque< Point * > points;
+    std::deque< point3d * > points;
     std::deque< FigureFace * > faces;
     bool inverseNormal;
     bool doubleSense;
@@ -31,9 +31,9 @@ public:
 	bool getInverseNormal();
 	bool getDoubleSense();
 
-	std::deque< Point* > getPoints();
+	std::deque< point3d* > getPoints();
 	std::deque< FigureFace* > getFaces();
-	void setPoints(std::deque< Point* > points);
+	void setPoints(std::deque< point3d* > points);
 	void setFaces( std::deque< FigureFace* > faces );
 
     void centralizeFigure();

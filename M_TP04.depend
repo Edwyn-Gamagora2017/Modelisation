@@ -361,3 +361,102 @@
 	"figures/Figure.h"
 	<string>
 
+1510069689 source:d:\documents_edwyn\github\modelisation\figures\figure.cpp
+	"Figure.h"
+
+1510131679 d:\documents_edwyn\github\modelisation\figures\figure.h
+	"vec3.h"
+	"point3d.h"
+	"FigureFace.h"
+	"Point.h"
+	<deque>
+
+1510069689 d:\documents_edwyn\github\modelisation\figures\vec3.h
+	<string>
+
+1510131192 d:\documents_edwyn\github\modelisation\figures\point3d.h
+	<string>
+	"vec3.h"
+
+1510069689 d:\documents_edwyn\github\modelisation\figures\figureface.h
+	<deque>
+	"Point.h"
+
+1510130960 d:\documents_edwyn\github\modelisation\figures\point.h
+	"vec3.h"
+
+1510069689 source:d:\documents_edwyn\github\modelisation\figures\figureface.cpp
+	"FigureFace.h"
+	<math.h>
+
+1510069689 source:d:\documents_edwyn\github\modelisation\figures\point.cpp
+	"Point.h"
+
+1510131210 source:d:\documents_edwyn\github\modelisation\figures\point3d.cpp
+	"point3d.h"
+	"../utils.h"
+
+1510069689 d:\documents_edwyn\github\modelisation\utils.h
+	<string>
+	<sstream>
+	<iostream>
+
+1510131232 source:d:\documents_edwyn\github\modelisation\figures\vec3.cpp
+	"vec3.h"
+	"math.h"
+	"../utils.h"
+
+1510131319 source:d:\documents_edwyn\github\modelisation\main.cpp
+	<windows.h>
+	<string>
+	<iostream>
+	"vec3.h"
+	"point3d.h"
+	"figures/Triangle.h"
+	"figures/Circle.h"
+	"figures/Square.h"
+	"figures/Cylinder.h"
+	"figures/Sphere.h"
+	"figures/Cone.h"
+	"utils.h"
+	"OffFile.h"
+	"GL\glut.h"
+	<stdio.h>
+	<math.h>
+	<stdlib.h>
+	<GL/glut.h>
+
+1510069689 d:\documents_edwyn\github\modelisation\figures\triangle.h
+	"Figure.h"
+
+1510069689 d:\documents_edwyn\github\modelisation\figures\circle.h
+	"Figure.h"
+
+1510069689 d:\documents_edwyn\github\modelisation\figures\square.h
+	"Figure.h"
+
+1510069689 d:\documents_edwyn\github\modelisation\figures\cylinder.h
+	"Figure.h"
+
+1510069689 d:\documents_edwyn\github\modelisation\figures\sphere.h
+	"Figure.h"
+
+1510069689 d:\documents_edwyn\github\modelisation\figures\cone.h
+	"Figure.h"
+
+1510069689 d:\documents_edwyn\github\modelisation\offfile.h
+	"figures/Figure.h"
+	<string>
+
+1510131457 source:d:\documents_edwyn\github\modelisation\offfile.cpp
+	"OffFile.h"
+	<iostream>
+	<fstream>
+	<deque>
+	"utils.h"
+	"vec3.h"
+	"figures/FigureFace.h"
+
+1510069689 source:d:\documents_edwyn\github\modelisation\utils.cpp
+	"utils.h"
+

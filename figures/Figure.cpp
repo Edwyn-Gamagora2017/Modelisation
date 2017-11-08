@@ -53,7 +53,7 @@ bool Figure::getDoubleSense(){
     return this->doubleSense;
 }
 
-std::deque<Point*> Figure::getPoints()
+std::deque<point3d*> Figure::getPoints()
 {
     return this->points;
 }
@@ -61,7 +61,7 @@ std::deque<FigureFace*> Figure::getFaces()
 {
     return this->faces;
 }
-void Figure::setPoints(std::deque< Point* > points)
+void Figure::setPoints(std::deque< point3d* > points)
 {
     this->points = points;
 }
@@ -74,11 +74,11 @@ void Figure::centralizeFigure()
 {
     if( this->points.size() > 0 )
     {
-        vec3 centreResult = *this->points[0]->getCoordinates();
+        vec3 centreResult = this->points[0].toVector();
 
         for(int i=1; i<this->points.size(); i++)
         {
-            centreResult = centreResult.addition( *this->points[i]->getCoordinates() );
+            centreResult = centreResult.addition( this->points[i].toVector() );
         }
 
         centreResult = centreResult.division( this->points.size() );

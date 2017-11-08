@@ -50,7 +50,7 @@ Figure * OffFile::readFile( string filename )
 
 	reader.close();
 
-	Figure * resultat = new Figure( new vec3(0,0,0), new vec3(1,1,1), new vec3(0,0,0), new point3d(255,255,255), false, false );
+	Figure * resultat = new Figure( new vec3(0,0,0), new vec3(1,1,1), new vec3(0,0,0), new point3d(255,255,255,-1), false, false );
 	resultat->setPoints( points );
 	resultat->setFaces( faces );
 

@@ -52,7 +52,7 @@ float tx=0.0;
 float ty=0.0;
 float tz=0.0;
 
-void drawFigureFaces( Figure * f, GLenum mode, point3d * couleur = new point3d(0,0,0) ){
+void drawFigureFaces( Figure * f, GLenum mode, point3d * couleur = new point3d(0,0,0,-1) ){
 	std::deque<FigureFace*> faces = f->getFaces();
 	vec3 * scale = f->getScale();
     vec3 * translation = f->getTranslation();
@@ -93,10 +93,10 @@ bool normalInverse = false;
 bool doubleSense = false;
 int selectedFigure = 0;
 
-point3d * color_white   = new point3d(255,255,255);
-point3d * color_yellow  = new point3d(255,255,0);
-point3d * color_red     = new point3d(255,0,0);
-point3d * color_black   = new point3d(0,0,0);
+point3d * color_white   = new point3d(255,255,255,-1);
+point3d * color_yellow  = new point3d(255,255,0,-1);
+point3d * color_red     = new point3d(255,0,0,-1);
+point3d * color_black   = new point3d(0,0,0,-1);
 
 Figure * f;
 
