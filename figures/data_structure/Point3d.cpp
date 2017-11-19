@@ -57,6 +57,30 @@ Point3d Point3d::fromVector(vec3 vect, int index)
 {
     return Point3d( vect.getX(), vect.getY(), vect.getZ(), index );
 }
+
+/*
+Edge
+*/
+bool Point3d::isAssociatedTo(Edge * e){
+    if( e != NULL ){
+        for( int i = 0; i<this->edges.size(); i++ ){
+            if (this->edges[i]->getIndex() == e->getIndex()){
+                return true;
+            }
+        }
+    }
+
+    return false;
+}
+void Point3d::associateTo(Edge * e){
+    if( !this->isAssociatedTo( e ) ){
+        this->edges.push_back( e );
+    }
+}
+
+/*
+Color
+*/
 Point3d Point3d::add( double x, double y, double z )
 {
     return Point3d( this->getX()+x, this->getY()+y, this->getZ()+z, this->index );

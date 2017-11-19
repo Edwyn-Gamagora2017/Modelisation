@@ -3,11 +3,17 @@
 
 #include <deque>
 #include "Point3d.h"
+class Point3d;
+class Edge;
 
 class FigureFace
 {
     std::deque<Point3d *> points;
+    std::deque<Edge *> edges;
     vec3 normal;
+
+    // Face's ID
+	int index;
 
     public:
         FigureFace( std::deque<Point3d *> points, vec3 normal );
