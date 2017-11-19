@@ -3,7 +3,7 @@
 #include "vec3.h"
 
 #pragma once
-class point3d
+class Point3d
 {
 	// coordonnees du point3d
 	double x = 0;
@@ -13,10 +13,10 @@ class point3d
 	int index;
 
 public:
-	point3d(double x, double y, double z, int index);
-	~point3d();
+	Point3d(double x, double y, double z, int index);
+	~Point3d();
 
-	static point3d * zero(int index);
+	static Point3d * zero(int index);
 
 	double getX();
 	double getY();
@@ -30,9 +30,10 @@ public:
 
 	std::string toString();
 
-	vec3 vectorFrom( point3d origin );
+	vec3 vectorFrom( Point3d origin );
 	vec3 toVector();
-	static point3d fromVector(vec3 vect, int index);
-	point3d add( double x, double y, double z );
-};
+	static Point3d fromVector(vec3 vect, int index);
 
+	// Color
+	Point3d add( double x, double y, double z );
+};

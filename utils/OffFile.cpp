@@ -4,8 +4,8 @@
 #include <fstream>
 #include <deque>
 #include "utils.h"
-#include "vec3.h"
-#include "figures/FigureFace.h"
+#include "../figures/data_structure/vec3.h"
+#include "../figures/data_structure/FigureFace.h"
 
 Figure * OffFile::readFile( string filename )
 {
@@ -19,7 +19,7 @@ Figure * OffFile::readFile( string filename )
 
 	int nPoints, nFaces, nEdges;
 	reader >> nPoints >> nFaces >> nEdges;
-	std::deque<Point*> points;
+	std::deque<Point3d*> points;
 	std::deque<FigureFace*> faces;
 
 	double x,y,z;
@@ -27,12 +27,12 @@ Figure * OffFile::readFile( string filename )
 	FOR( i, nPoints )
 	{
         reader >> x >> y >> z;
-	    points.push_back( new Point(new vec3( x,y,z ), i) );
+	    points.push_back( new Point3d(x,y,z, i) );
 	}
 	FOR( i, nFaces )
 	{
 	    reader >> pPerFace;
-	    std::deque<Point*> pointsFace;
+	    std::deque<Point3d*> pointsFace;
 
 	    FOR(j,pPerFace)
 	    {
@@ -43,14 +43,14 @@ Figure * OffFile::readFile( string filename )
 	    if( pPerFace >= 3 )
         {
             // Normal from the fist points
-            vec3 normal = pointsFace[1]->getCoordinates()->soustraction( *pointsFace[0]->getCoordinates() ).produitVectoriel( pointsFace[2]->getCoordinates()->soustraction( *pointsFace[0]->getCoordinates() ) );
+            vec3 normal = pointsFace[1]->toVector().soustraction( pointsFace[0]->toVector() ).produitVectoriel( pointsFace[2]->toVector().soustraction( pointsFace[0]->toVector() ) );
             faces.push_back( new FigureFace( pointsFace, normal ) );
         }
 	}
 
 	reader.close();
 
-	Figure * resultat = new Figure( new vec3(0,0,0), new vec3(1,1,1), new vec3(0,0,0), new point3d(255,255,255,-1), false, false );
+	Figure * resultat = new Figure( new vec3(0,0,0), new vec3(1,1,1), new vec3(0,0,0), new Point3d(255,255,255,-1), false, false );
 	resultat->setPoints( points );
 	resultat->setFaces( faces );
 
@@ -71,7 +71,7 @@ void OffFile::writeFile( Figure * f, string filename )
 
 	FOR(i,f->getPoints().size())
 	{
-	    writer << f->getPoints()[i]->getCoordinates()->getX() << " " << f->getPoints()[i]->getCoordinates()->getY() << " " << f->getPoints()[i]->getCoordinates()->getZ() << std::endl;
+	    writer << f->getPoints()[i]->getX() << " " << f->getPoints()[i]->getY() << " " << f->getPoints()[i]->getZ() << std::endl;
 	}
 	FOR(i,f->getFaces().size())
 	{

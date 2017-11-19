@@ -50,21 +50,19 @@
 			<Add library="gdi32" />
 			<Add directory="C:/Program Files (x86)/CodeBlocks/MinGW/lib" />
 		</Linker>
-		<Unit filename="OffFile.cpp" />
-		<Unit filename="OffFile.h" />
-		<Unit filename="figures/Figure.cpp" />
-		<Unit filename="figures/Figure.h" />
-		<Unit filename="figures/FigureFace.cpp" />
-		<Unit filename="figures/FigureFace.h" />
-		<Unit filename="figures/Point.cpp" />
-		<Unit filename="figures/Point.h" />
+		<Unit filename="figures/data_structure/Figure.cpp" />
+		<Unit filename="figures/data_structure/Figure.h" />
+		<Unit filename="figures/data_structure/FigureFace.cpp" />
+		<Unit filename="figures/data_structure/FigureFace.h" />
+		<Unit filename="figures/data_structure/Point3d.cpp" />
+		<Unit filename="figures/data_structure/Point3d.h" />
+		<Unit filename="figures/data_structure/vec3.cpp" />
+		<Unit filename="figures/data_structure/vec3.h" />
 		<Unit filename="main.cpp" />
-		<Unit filename="point3d.cpp" />
-		<Unit filename="point3d.h" />
-		<Unit filename="utils.cpp" />
-		<Unit filename="utils.h" />
-		<Unit filename="vec3.cpp" />
-		<Unit filename="vec3.h" />
+		<Unit filename="utils/OffFile.cpp" />
+		<Unit filename="utils/OffFile.h" />
+		<Unit filename="utils/utils.cpp" />
+		<Unit filename="utils/utils.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />
