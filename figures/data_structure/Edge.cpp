@@ -16,6 +16,9 @@ bool Edge::hasPoint( Point3d * p ){
     }
     return false;
 }
+bool Edge::hasPoints( Point3d * p1, Point3d * p2 ){
+    return this->hasPoint( p1 ) && this->hasPoint( p2 );
+}
 
 /* GETTERS */
 Point3d * Edge::getPointA(){

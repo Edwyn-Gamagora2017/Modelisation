@@ -2,9 +2,10 @@
 1511099668 source:c:\users\edwyn luis\documents\lyon\gamagora\modelisation_geometrique\projetos\modelisation\figures\data_structure\figure.cpp
 	"Figure.h"
 
-1511100142 c:\users\edwyn luis\documents\lyon\gamagora\modelisation_geometrique\projetos\modelisation\figures\data_structure\figure.h
+1511104848 c:\users\edwyn luis\documents\lyon\gamagora\modelisation_geometrique\projetos\modelisation\figures\data_structure\figure.h
 	"vec3.h"
 	"Point3d.h"
+	"Edge.h"
 	"FigureFace.h"
 	<deque>
 
@@ -30,7 +31,7 @@
 
 1341006770 c:\program files (x86)\codeblocks\mingw\include\_mingw.h
 
-1511099256 source:c:\users\edwyn luis\documents\lyon\gamagora\modelisation_geometrique\projetos\modelisation\figures\data_structure\point3d.cpp
+1511103763 source:c:\users\edwyn luis\documents\lyon\gamagora\modelisation_geometrique\projetos\modelisation\figures\data_structure\point3d.cpp
 	"Point3d.h"
 	"../../utils/utils.h"
 
@@ -298,11 +299,11 @@
 1511098182 source:c:\users\edwyn luis\documents\lyon\gamagora\modelisation_geometrique\projetos\modelisation\utils\utils.cpp
 	"utils.h"
 
-1511103972 c:\users\edwyn luis\documents\lyon\gamagora\modelisation_geometrique\projetos\modelisation\figures\data_structure\edge.h
+1511104965 c:\users\edwyn luis\documents\lyon\gamagora\modelisation_geometrique\projetos\modelisation\figures\data_structure\edge.h
 	"Point3d.h"
 	"FigureFace.h"
 	<deque>
 
-1511103632 source:c:\users\edwyn luis\documents\lyon\gamagora\modelisation_geometrique\projetos\modelisation\figures\data_structure\edge.cpp
+1511105013 source:c:\users\edwyn luis\documents\lyon\gamagora\modelisation_geometrique\projetos\modelisation\figures\data_structure\edge.cpp
 	"Edge.h"
 

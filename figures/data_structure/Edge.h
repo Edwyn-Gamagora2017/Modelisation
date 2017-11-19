@@ -30,6 +30,7 @@ class Edge
         virtual ~Edge();
 
         bool hasPoint( Point3d * p );
+        bool hasPoints( Point3d * p1, Point3d * p2 );
         /* GETTERS */
         Point3d * getPointA();
         Point3d * getPointB();

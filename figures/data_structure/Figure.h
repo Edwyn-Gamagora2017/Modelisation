@@ -3,6 +3,7 @@
 
 #include "vec3.h"
 #include "Point3d.h"
+#include "Edge.h"
 #include "FigureFace.h"
 #include <deque>
 
@@ -15,6 +16,7 @@ protected:
 	vec3 * translation;
 	Point3d * couleur;
     std::deque< Point3d * > points;
+    std::deque< Edge * > edges;
     std::deque< FigureFace * > faces;
     bool inverseNormal;
     bool doubleSense;
@@ -31,6 +33,7 @@ public:
 	bool getDoubleSense();
 
 	std::deque< Point3d* > getPoints();
+	std::deque< Edge* > getEdges();
 	std::deque< FigureFace* > getFaces();
 	void setPoints(std::deque< Point3d* > points);
 	void setFaces( std::deque< FigureFace* > faces );
@@ -45,6 +48,8 @@ protected:
 	void setCouleur(Point3d * couleur);
 	void setInverseNormal(bool inverseNormal);
 	void setDoubleSense(bool doubleSense);
+
+	bool hasEdge( Point3d * pA, Point3d * pB );
 
 	virtual void generatePointsAndFaces();
 };
