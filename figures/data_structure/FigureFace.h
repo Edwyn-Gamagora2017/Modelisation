@@ -25,7 +25,13 @@ class FigureFace
         static std::deque<FigureFace *> CouvercleFigureFace( std::deque<Point3d*> points, bool inverseNormal, bool doubleSense, bool cutCenter, int index = -1 );  // the center is the last element in the list
 
         std::deque<Point3d *> getPoints();
+        std::deque<Edge *> getEdges();
+        int getEdgesCount();
         int getIndex();
+
+        // Edges
+        bool hasEdge(Edge * e);
+        void includeEdge(Edge * e);
 
     private:
         static FigureFace * TriangleFigureFaceBasic( Point3d * pointA, Point3d * pointB, Point3d * pointC, bool inverseNormal, int index = -1 );

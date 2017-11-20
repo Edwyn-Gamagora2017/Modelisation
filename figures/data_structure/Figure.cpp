@@ -1,4 +1,5 @@
 #include "Figure.h"
+#include <iostream>
 
 Figure::Figure( vec3 * rotation, vec3 * scale, vec3 * translation, Point3d * couleur, bool inverseNormal, bool doubleSense ){
     this->setRotation( rotation );
@@ -84,7 +85,7 @@ void Figure::setFaces( std::deque< FigureFace* > faces )
 
     // Calculate Edges
     for(int i=0; i<this->faces.size(); i++){
-            std::deque<Point3d*> pointsFace = this->faces[i]->getPoints();
+        std::deque<Point3d*> pointsFace = this->faces[i]->getPoints();
         for(int j=0; j<pointsFace.size(); j++){
             Point3d * p1 = pointsFace[j];
             Point3d * p2 = pointsFace[(j+1)%pointsFace.size()];
@@ -96,6 +97,7 @@ void Figure::setFaces( std::deque< FigureFace* > faces )
             }
             // Associate Edge to face
             existingEdge->associateTo( this->faces[i] );
+            this->faces[i]->includeEdge( existingEdge );
         }
     }
 }

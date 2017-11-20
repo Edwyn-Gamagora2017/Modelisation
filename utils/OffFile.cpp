@@ -3,6 +3,7 @@
 #include <iostream>
 #include <fstream>
 #include <deque>
+#include <climits>  // INT_MAX
 #include "utils.h"
 #include "../figures/data_structure/vec3.h"
 #include "../figures/data_structure/FigureFace.h"
@@ -88,7 +89,62 @@ void OffFile::writeFile( Figure * f, string filename )
 
 void OffFile::printInfo( Figure * f )
 {
-	cout << "Vertices: " << f->getPoints().size() << std::endl;
-	cout << "Edges: " << f->getEdges().size() << std::endl;
-	cout << "Faces: " << f->getFaces().size() << std::endl;
+    std::deque<Point3d*> points = f->getPoints();
+	cout << "Vertices: " << points.size() << std::endl;
+
+	std::deque<Edge*> edges = f->getEdges();
+	cout << "Edges: " << edges.size() << std::endl;
+
+    std::deque<FigureFace*> faces = f->getFaces();
+	cout << "Faces: " << faces.size() << std::endl;
+
+	// Edges per Face
+	int maxEdgesPerFace = 0;
+	int minEdgesPerFace = INT_MAX;
+    FOR(i,faces.size()){
+        int countEdges = faces[i]->getEdgesCount();
+        if( countEdges > maxEdgesPerFace ){
+            maxEdgesPerFace = countEdges;
+        }
+        if( countEdges < minEdgesPerFace ){
+            minEdgesPerFace = countEdges;
+        }
+    }
+	cout << "Max Edges per Face: " << maxEdgesPerFace << std::endl;
+	cout << "Min Edges per Face: " << minEdgesPerFace << std::endl;
+
+	// Edges per Vertex
+	int maxEdgesPerVertex = 0;
+	int minEdgesPerVertex = INT_MAX;
+    FOR(i,points.size()){
+        int countEdges = points[i]->getEdgesCount();
+        if( countEdges > maxEdgesPerVertex ){
+            maxEdgesPerVertex = countEdges;
+        }
+        if( countEdges < minEdgesPerVertex ){
+            minEdgesPerVertex = countEdges;
+        }
+    }
+	cout << "Max Edges per Vertex: " << maxEdgesPerVertex << std::endl;
+	cout << "Min Edges per Vertex: " << minEdgesPerVertex << std::endl;
+
+	// Shared Edges
+    int edgeSharedByZeroFace = 0;
+    int edgeSharedByOneFace = 0;
+    int edgeSharedByTwoFaces = 0;
+    FOR(i,edges.size()){
+        int countFaces = edges[i]->getFacesCount();
+        if( countFaces == 2 ){
+            edgeSharedByTwoFaces++;
+        } else
+        if( countFaces == 1 ){
+            edgeSharedByOneFace++;
+        } else
+        if( countFaces == 0 ){
+            edgeSharedByZeroFace++;
+        }
+    }
+    cout << "Edges shared by 0 face: " << edgeSharedByZeroFace << std::endl;
+	cout << "Edges shared by 1 face: " << edgeSharedByOneFace << std::endl;
+	cout << "Edges shared by 2 faces: " << edgeSharedByTwoFaces << std::endl;
 }

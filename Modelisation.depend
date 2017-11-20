@@ -1,6 +1,7 @@
 # depslib dependency file v1.0
-1511202372 source:c:\users\edwyn luis\documents\lyon\gamagora\modelisation_geometrique\projetos\modelisation\figures\data_structure\figure.cpp
+1511206296 source:c:\users\edwyn luis\documents\lyon\gamagora\modelisation_geometrique\projetos\modelisation\figures\data_structure\figure.cpp
 	"Figure.h"
+	<iostream>
 
 1511202172 c:\users\edwyn luis\documents\lyon\gamagora\modelisation_geometrique\projetos\modelisation\figures\data_structure\figure.h
 	"vec3.h"
@@ -12,26 +13,27 @@
 1511098196 c:\users\edwyn luis\documents\lyon\gamagora\modelisation_geometrique\projetos\modelisation\figures\data_structure\vec3.h
 	<string>
 
-1511103898 c:\users\edwyn luis\documents\lyon\gamagora\modelisation_geometrique\projetos\modelisation\figures\data_structure\point3d.h
+1511206509 c:\users\edwyn luis\documents\lyon\gamagora\modelisation_geometrique\projetos\modelisation\figures\data_structure\point3d.h
 	"vec3.h"
 	"Edge.h"
 	<deque>
 	<string>
 
-1511202503 c:\users\edwyn luis\documents\lyon\gamagora\modelisation_geometrique\projetos\modelisation\figures\data_structure\figureface.h
+1511206011 c:\users\edwyn luis\documents\lyon\gamagora\modelisation_geometrique\projetos\modelisation\figures\data_structure\figureface.h
 	<deque>
 	"Point3d.h"
 
-1511202001 source:c:\users\edwyn luis\documents\lyon\gamagora\modelisation_geometrique\projetos\modelisation\figures\data_structure\figureface.cpp
+1511206040 source:c:\users\edwyn luis\documents\lyon\gamagora\modelisation_geometrique\projetos\modelisation\figures\data_structure\figureface.cpp
 	"FigureFace.h"
 	<math.h>
+	<iostream>
 
 1341006774 c:\program files (x86)\codeblocks\mingw\include\math.h
 	<_mingw.h>
 
 1341006770 c:\program files (x86)\codeblocks\mingw\include\_mingw.h
 
-1511201477 source:c:\users\edwyn luis\documents\lyon\gamagora\modelisation_geometrique\projetos\modelisation\figures\data_structure\point3d.cpp
+1511206535 source:c:\users\edwyn luis\documents\lyon\gamagora\modelisation_geometrique\projetos\modelisation\figures\data_structure\point3d.cpp
 	"Point3d.h"
 	"../../utils/utils.h"
 
@@ -45,7 +47,7 @@
 	"math.h"
 	"../../utils/utils.h"
 
-1511100562 source:c:\users\edwyn luis\documents\lyon\gamagora\modelisation_geometrique\projetos\modelisation\main.cpp
+1511206256 source:c:\users\edwyn luis\documents\lyon\gamagora\modelisation_geometrique\projetos\modelisation\main.cpp
 	<windows.h>
 	<string>
 	<iostream>
@@ -54,6 +56,7 @@
 	"figures/data_structure/Figure.h"
 	"utils/utils.h"
 	"utils/OffFile.h"
+	"figures/Square.h"
 	"GL\glut.h"
 	<stdio.h>
 	<math.h>
@@ -287,11 +290,12 @@
 	<_mingw.h>
 	<stddef.h>
 
-1511202620 source:c:\users\edwyn luis\documents\lyon\gamagora\modelisation_geometrique\projetos\modelisation\utils\offfile.cpp
+1511206902 source:c:\users\edwyn luis\documents\lyon\gamagora\modelisation_geometrique\projetos\modelisation\utils\offfile.cpp
 	"OffFile.h"
 	<iostream>
 	<fstream>
 	<deque>
+	<climits>
 	"utils.h"
 	"../figures/data_structure/vec3.h"
 	"../figures/data_structure/FigureFace.h"
@@ -299,11 +303,18 @@
 1511098182 source:c:\users\edwyn luis\documents\lyon\gamagora\modelisation_geometrique\projetos\modelisation\utils\utils.cpp
 	"utils.h"
 
-1511202438 c:\users\edwyn luis\documents\lyon\gamagora\modelisation_geometrique\projetos\modelisation\figures\data_structure\edge.h
+1511206635 c:\users\edwyn luis\documents\lyon\gamagora\modelisation_geometrique\projetos\modelisation\figures\data_structure\edge.h
 	"Point3d.h"
 	"FigureFace.h"
 	<deque>
 
-1511202468 source:c:\users\edwyn luis\documents\lyon\gamagora\modelisation_geometrique\projetos\modelisation\figures\data_structure\edge.cpp
+1511206684 source:c:\users\edwyn luis\documents\lyon\gamagora\modelisation_geometrique\projetos\modelisation\figures\data_structure\edge.cpp
 	"Edge.h"
+
+1511204351 source:c:\users\edwyn luis\documents\lyon\gamagora\modelisation_geometrique\projetos\modelisation\figures\square.cpp
+	"Square.h"
+	"../utils/utils.h"
+
+1511203070 c:\users\edwyn luis\documents\lyon\gamagora\modelisation_geometrique\projetos\modelisation\figures\square.h
+	"data_structure/Figure.h"
 

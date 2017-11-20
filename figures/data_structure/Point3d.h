@@ -33,6 +33,7 @@ public:
 	double getY();
 	double getZ();
 	int getIndex();
+	int getEdgesCount();
 
 	void set(double x, double y, double z);
 	void setX(double x);

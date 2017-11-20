@@ -25,6 +25,9 @@ double Point3d::getZ() {
 int Point3d::getIndex(){
     return this->index;
 }
+int Point3d::getEdgesCount(){
+    return this->edges.size();
+}
 
 void Point3d::set(double x, double y, double z) {
 	this->setX(x);

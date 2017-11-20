@@ -52,3 +52,6 @@ std::deque<FigureFace *> Edge::getFaces(){
 int Edge::getIndex(){
     return this->index;
 }
+int Edge::getFacesCount(){
+    return this->faces.size();
+}

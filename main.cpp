@@ -11,6 +11,8 @@
 #include "utils/utils.h"
 #include "utils/OffFile.h"
 
+#include "figures/Square.h"
+
 #include "GL\glut.h"
 
 #include <stdio.h>
@@ -72,6 +74,10 @@ void drawFigureFaces( Figure * f, GLenum mode, Point3d * couleur = new Point3d(0
                 p->getX(), p->getY(), p->getZ()
             );
         }
+        // Closing figure
+        Point3d * p = faces[i]->getPoints()[0];
+        glVertex3f(p->getX(), p->getY(), p->getZ());
+
         glEnd();
         glPopMatrix();
     }
@@ -101,6 +107,7 @@ void createFigure()
     switch( selectedFigure )
     {
         case 0: f    = OffFile::readFile( "maillages/triceratops" ); break;
+//        case 0: f    = new Square(new vec3(),1,1,color_red,false,false); break;
         case 1: f    = OffFile::readFile( "maillages/max" ); break;
         case 2: f    = OffFile::readFile( "maillages/buddha" ); break;
         case 3: f    = OffFile::readFile( "maillages/bunny" ); break;

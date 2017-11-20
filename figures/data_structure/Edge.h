@@ -39,6 +39,7 @@ class Edge
         Point3d * getPointA();
         Point3d * getPointB();
         std::deque<FigureFace *> getFaces();
+        int getFacesCount();
         int getIndex();
 };
 

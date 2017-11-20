@@ -1,6 +1,7 @@
 #include "FigureFace.h"
 
 #include <math.h>
+#include <iostream>
 
 FigureFace::FigureFace(std::deque<Point3d *> points, vec3 normal, int index )
 {
@@ -17,6 +18,13 @@ std::deque<Point3d*> FigureFace::getPoints()
 {
     return this->points;
 }
+std::deque<Edge*> FigureFace::getEdges()
+{
+    return this->edges;
+}
+int FigureFace::getEdgesCount(){
+    return this->edges.size();
+}
 int FigureFace::getIndex(){
     return this->index;
 }
@@ -24,6 +32,21 @@ int FigureFace::getIndex(){
 FigureFace::~FigureFace()
 {
 
+}
+
+ // Edges
+bool FigureFace::hasEdge(Edge * e){
+    for(int i=0; i<this->edges.size(); i++){
+        if( this->edges[i]->getIndex() == e->getIndex() ){
+            return true;
+        }
+    }
+    return false;
+}
+void FigureFace::includeEdge(Edge * e){
+    if( !this->hasEdge( e ) ){
+        this->edges.push_back( e );
+    }
 }
 
 FigureFace* FigureFace::TriangleFigureFaceBasic(Point3d* pointA, Point3d* pointB, Point3d* pointC, bool inverseNormal, int index)
@@ -39,7 +62,7 @@ FigureFace* FigureFace::TriangleFigureFaceBasic(Point3d* pointA, Point3d* pointB
         { pointsT.push_back( pointB ); pointsT.push_back( pointC ); }
     else
         { pointsT.push_back( pointC ); pointsT.push_back( pointB ); }
-    pointsT.push_back( pointA );
+    //pointsT.push_back( pointA );
     vec3 normalTriangle = pointB->vectorFrom(*pointA).produitVectoriel( pointC->vectorFrom(*pointA) ).normalized();
 
     return new FigureFace( pointsT, (inverseNormal?normalTriangle.negative():normalTriangle), index );
@@ -49,7 +72,7 @@ std::deque<FigureFace*> FigureFace::TriangleFigureFace(Point3d* pointA, Point3d*
 {
     std::deque<FigureFace*> result;
     result.push_back( FigureFace::TriangleFigureFaceBasic( pointA, pointB, pointC, inverseNormal, index ) );
-    if(doubleSense) result.push_back( FigureFace::TriangleFigureFaceBasic( pointA, pointB, pointC, !inverseNormal, index ) );
+    if(doubleSense) result.push_back( FigureFace::TriangleFigureFaceBasic( pointA, pointB, pointC, !inverseNormal, index+1 ) );
     return result;
 }
 
