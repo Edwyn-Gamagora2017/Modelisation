@@ -5,17 +5,13 @@
 #include <string>
 #include <iostream>
 
-#include "vec3.h"
-#include "point3d.h"
-#include "figures/Triangle.h"
-#include "figures/Circle.h"
+#include "figures/data_structure/vec3.h"
+#include "figures/data_structure/Point3d.h"
+#include "figures/data_structure/Figure.h"
+#include "utils/utils.h"
+#include "utils/OffFile.h"
+
 #include "figures/Square.h"
-//#include "flocon.h"
-#include "figures/Cylinder.h"
-#include "figures/Sphere.h"
-#include "figures/Cone.h"
-#include "utils.h"
-#include "OffFile.h"
 
 #include "GL\glut.h"
 
@@ -52,7 +48,7 @@ float tx=0.0;
 float ty=0.0;
 float tz=0.0;
 
-void drawFigureFaces( Figure * f, GLenum mode, point3d * couleur = new point3d(0,0,0) ){
+void drawFigureFaces( Figure * f, GLenum mode, Point3d * couleur = new Point3d(0,0,0,-1) ){
 	std::deque<FigureFace*> faces = f->getFaces();
 	vec3 * scale = f->getScale();
     vec3 * translation = f->getTranslation();
@@ -69,7 +65,7 @@ void drawFigureFaces( Figure * f, GLenum mode, point3d * couleur = new point3d(0
         glColor3f(couleur->getX(), couleur->getY(), couleur->getZ());
         for(int j=0; j< faces[i]->getPoints().size(); j++)
         {
-            vec3 * p = faces[i]->getPoints()[j]->getCoordinates();
+            Point3d * p = faces[i]->getPoints()[j];
 
             glVertex3f(
               /*(p->getX()*scale->getX())+translation->getX(),
@@ -78,6 +74,10 @@ void drawFigureFaces( Figure * f, GLenum mode, point3d * couleur = new point3d(0
                 p->getX(), p->getY(), p->getZ()
             );
         }
+        // Closing figure
+        Point3d * p = faces[i]->getPoints()[0];
+        glVertex3f(p->getX(), p->getY(), p->getZ());
+
         glEnd();
         glPopMatrix();
     }
@@ -93,10 +93,10 @@ bool normalInverse = false;
 bool doubleSense = false;
 int selectedFigure = 0;
 
-point3d * color_white   = new point3d(255,255,255);
-point3d * color_yellow  = new point3d(255,255,0);
-point3d * color_red     = new point3d(255,0,0);
-point3d * color_black   = new point3d(0,0,0);
+Point3d * color_white   = new Point3d(255,255,255,-1);
+Point3d * color_yellow  = new Point3d(255,255,0,-1);
+Point3d * color_red     = new Point3d(255,0,0,-1);
+Point3d * color_black   = new Point3d(0,0,0,-1);
 
 Figure * f;
 
@@ -107,6 +107,7 @@ void createFigure()
     switch( selectedFigure )
     {
         case 0: f    = OffFile::readFile( "maillages/triceratops" ); break;
+//        case 0: f    = new Square(new vec3(),1,1,color_red,false,false); break;
         case 1: f    = OffFile::readFile( "maillages/max" ); break;
         case 2: f    = OffFile::readFile( "maillages/buddha" ); break;
         case 3: f    = OffFile::readFile( "maillages/bunny" ); break;
@@ -114,7 +115,6 @@ void createFigure()
     }
 
     OffFile::printInfo( f );
-//    OffFile::writeFile( f, "maillages/test" );
 }
 
 /* initialisation d'OpenGL*/
@@ -274,6 +274,12 @@ GLvoid window_key_down(unsigned char key, int x, int y)  //appuie des touches
         case '0':case '1':case '2':case '3':case '4':case '5':case '6':
             selectedFigure = key-'0';
             createFigure(); glutPostRedisplay();
+        break;
+
+        // Save
+        case 'w':
+            printf ("Saving the mesh to 'maillaged/test'\n");
+            OffFile::writeFile( f, "maillages/test" );
         break;
 
     //sortie

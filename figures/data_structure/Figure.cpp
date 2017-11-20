@@ -1,6 +1,7 @@
 #include "Figure.h"
+#include <iostream>
 
-Figure::Figure( vec3 * rotation, vec3 * scale, vec3 * translation, point3d * couleur, bool inverseNormal, bool doubleSense ){
+Figure::Figure( vec3 * rotation, vec3 * scale, vec3 * translation, Point3d * couleur, bool inverseNormal, bool doubleSense ){
     this->setRotation( rotation );
     this->setScale( scale );
     this->setTranslation( translation );
@@ -24,7 +25,7 @@ void Figure::setScale(vec3 * scale){
 void Figure::setTranslation(vec3 * translation){
     this->translation = translation;
 }
-void Figure::setCouleur(point3d * couleur){
+void Figure::setCouleur(Point3d * couleur){
     this->couleur = couleur;
 }
 void Figure::setInverseNormal(bool inverseNormal){
@@ -43,7 +44,7 @@ vec3 * Figure::getScale(){
 vec3 * Figure::getTranslation(){
     return this->translation;
 }
-point3d * Figure::getCouleur(){
+Point3d * Figure::getCouleur(){
     return this->couleur;
 }
 bool Figure::getInverseNormal(){
@@ -53,40 +54,71 @@ bool Figure::getDoubleSense(){
     return this->doubleSense;
 }
 
-std::deque<Point*> Figure::getPoints()
+std::deque<Point3d*> Figure::getPoints()
 {
     return this->points;
+}
+std::deque<Edge*> Figure::getEdges()
+{
+    return this->edges;
 }
 std::deque<FigureFace*> Figure::getFaces()
 {
     return this->faces;
 }
-void Figure::setPoints(std::deque< Point* > points)
+
+Edge * Figure::hasEdge( Point3d * pA, Point3d * pB ){
+    for(int i=0; i<this->edges.size(); i++){
+        if( this->edges[i]->hasPoints( pA, pB ) ){
+            return this->edges[i];
+        }
+    }
+    return NULL;
+}
+void Figure::setPoints(std::deque< Point3d* > points)
 {
     this->points = points;
 }
 void Figure::setFaces( std::deque< FigureFace* > faces )
 {
     this->faces = faces;
+
+    // Calculate Edges
+    for(int i=0; i<this->faces.size(); i++){
+        std::deque<Point3d*> pointsFace = this->faces[i]->getPoints();
+        for(int j=0; j<pointsFace.size(); j++){
+            Point3d * p1 = pointsFace[j];
+            Point3d * p2 = pointsFace[(j+1)%pointsFace.size()];
+
+            Edge * existingEdge = this->hasEdge( p1, p2 );
+            if( existingEdge == NULL ){
+                existingEdge = new Edge( p1, p2, this->edges.size() );
+                this->edges.push_back( existingEdge );
+            }
+            // Associate Edge to face
+            existingEdge->associateTo( this->faces[i] );
+            this->faces[i]->includeEdge( existingEdge );
+        }
+    }
 }
 
 void Figure::centralizeFigure()
 {
     if( this->points.size() > 0 )
     {
-        vec3 centreResult = *this->points[0]->getCoordinates();
+        vec3 centreResult = this->points[0]->toVector();
 
         for(int i=1; i<this->points.size(); i++)
         {
-            centreResult = centreResult.addition( *this->points[i]->getCoordinates() );
+            centreResult = centreResult.addition( this->points[i]->toVector() );
         }
 
         centreResult = centreResult.division( this->points.size() );
 
         for(int i=0; i<this->points.size(); i++)
         {
-            vec3 centeredPoint = this->points[i]->getCoordinates()->soustraction( centreResult );
-            this->points[i]->getCoordinates()->set( centeredPoint.getX(), centeredPoint.getY(), centeredPoint.getZ() );
+            vec3 centeredPoint = this->points[i]->toVector().soustraction( centreResult );
+            this->points[i]->set( centeredPoint.getX(), centeredPoint.getY(), centeredPoint.getZ() );
         }
     }
 }
@@ -104,18 +136,18 @@ void Figure::normalizeFigure()
     // TODO must be centralized
     if( this->points.size() > 0 )
     {
-        double normeResult = this->points[0]->getCoordinates()->norme();
+        double normeResult = this->points[0]->toVector().norme();
 
         for(int i=1; i<this->points.size(); i++)
         {
-            double normePoint = this->points[i]->getCoordinates()->norme();
+            double normePoint = this->points[i]->toVector().norme();
             if( normePoint > normeResult ) normeResult = normePoint;
         }
 
         for(int i=0; i<this->points.size(); i++)
         {
-            vec3 normalizedPoint = this->points[i]->getCoordinates()->division( normeResult );
-            this->points[i]->getCoordinates()->set( normalizedPoint.getX(), normalizedPoint.getY(), normalizedPoint.getZ() );
+            vec3 normalizedPoint = this->points[i]->toVector().division( normeResult );
+            this->points[i]->set( normalizedPoint.getX(), normalizedPoint.getY(), normalizedPoint.getZ() );
         }
         /*vec3 maxResult = positiveValues( *this->points[0] );
 

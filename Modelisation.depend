@@ -1,103 +1,62 @@
 # depslib dependency file v1.0
-1507554407 source:c:\users\eddossan\documents\modelisation\tp04\m_tp04\figures\circle.cpp
-	<math.h>
-	<deque>
-	"Circle.h"
-
-1341003174 c:\program files (x86)\codeblocks\mingw\include\math.h
-	<_mingw.h>
-
-1341003170 c:\program files (x86)\codeblocks\mingw\include\_mingw.h
-
-1507565118 c:\users\eddossan\documents\modelisation\tp04\m_tp04\figures\circle.h
+1511206296 source:c:\users\edwyn luis\documents\lyon\gamagora\modelisation_geometrique\projetos\modelisation\figures\data_structure\figure.cpp
 	"Figure.h"
-
-1507558806 c:\users\eddossan\documents\modelisation\tp04\m_tp04\figures\figure.h
-	"../vec3.h"
-	"../point3d.h"
-	"FigureFace.h"
-	"Point.h"
-	<deque>
-
-1507284548 c:\users\eddossan\documents\modelisation\tp04\m_tp04\vec3.h
-	<string>
-
-1507284116 c:\users\eddossan\documents\modelisation\tp04\m_tp04\point3d.h
-	<string>
-	"vec3.h"
-
-1507564928 c:\users\eddossan\documents\modelisation\tp04\m_tp04\figures\figureface.h
-	<deque>
-	"Point.h"
-
-1507484880 source:c:\users\eddossan\documents\modelisation\tp04\m_tp04\figures\cone.cpp
-	"Cone.h"
-	"../utils.h"
-	"Circle.h"
-	"math.h"
 	<iostream>
 
-1507480764 c:\users\eddossan\documents\modelisation\tp04\m_tp04\figures\cone.h
-	"Figure.h"
+1511202172 c:\users\edwyn luis\documents\lyon\gamagora\modelisation_geometrique\projetos\modelisation\figures\data_structure\figure.h
+	"vec3.h"
+	"Point3d.h"
+	"Edge.h"
+	"FigureFace.h"
+	<deque>
 
-1507302980 c:\users\eddossan\documents\modelisation\tp04\m_tp04\utils.h
+1511098196 c:\users\edwyn luis\documents\lyon\gamagora\modelisation_geometrique\projetos\modelisation\figures\data_structure\vec3.h
+	<string>
+
+1511206509 c:\users\edwyn luis\documents\lyon\gamagora\modelisation_geometrique\projetos\modelisation\figures\data_structure\point3d.h
+	"vec3.h"
+	"Edge.h"
+	<deque>
+	<string>
+
+1511206011 c:\users\edwyn luis\documents\lyon\gamagora\modelisation_geometrique\projetos\modelisation\figures\data_structure\figureface.h
+	<deque>
+	"Point3d.h"
+
+1511206040 source:c:\users\edwyn luis\documents\lyon\gamagora\modelisation_geometrique\projetos\modelisation\figures\data_structure\figureface.cpp
+	"FigureFace.h"
+	<math.h>
+	<iostream>
+
+1341006774 c:\program files (x86)\codeblocks\mingw\include\math.h
+	<_mingw.h>
+
+1341006770 c:\program files (x86)\codeblocks\mingw\include\_mingw.h
+
+1511206535 source:c:\users\edwyn luis\documents\lyon\gamagora\modelisation_geometrique\projetos\modelisation\figures\data_structure\point3d.cpp
+	"Point3d.h"
+	"../../utils/utils.h"
+
+1511098182 c:\users\edwyn luis\documents\lyon\gamagora\modelisation_geometrique\projetos\modelisation\utils\utils.h
 	<string>
 	<sstream>
 	<iostream>
 
-1507484702 source:c:\users\eddossan\documents\modelisation\tp04\m_tp04\figures\cylinder.cpp
-	"Cylinder.h"
+1511099877 source:c:\users\edwyn luis\documents\lyon\gamagora\modelisation_geometrique\projetos\modelisation\figures\data_structure\vec3.cpp
+	"vec3.h"
 	"math.h"
-	<iostream>
-	"Circle.h"
-	"../utils.h"
+	"../../utils/utils.h"
 
-1507480838 c:\users\eddossan\documents\modelisation\tp04\m_tp04\figures\cylinder.h
-	"Figure.h"
-
-1507567322 source:c:\users\eddossan\documents\modelisation\tp04\m_tp04\figures\figureface.cpp
-	"FigureFace.h"
-	<math.h>
-
-1507554432 source:c:\users\eddossan\documents\modelisation\tp04\m_tp04\figures\sphere.cpp
-	"Sphere.h"
-	<iostream>
-	<math.h>
-	"Circle.h"
-	"../utils.h"
-	"Sphere.h"
-	"math.h"
-
-1507479756 c:\users\eddossan\documents\modelisation\tp04\m_tp04\figures\sphere.h
-	"Figure.h"
-
-1507311332 source:c:\users\eddossan\documents\modelisation\tp04\m_tp04\figures\square.cpp
-	"Square.h"
-	"../utils.h"
-
-1507560361 c:\users\eddossan\documents\modelisation\tp04\m_tp04\figures\square.h
-	"Figure.h"
-
-1507312008 source:c:\users\eddossan\documents\modelisation\tp04\m_tp04\figures\triangle.cpp
-	"Triangle.h"
-
-1507560571 c:\users\eddossan\documents\modelisation\tp04\m_tp04\figures\triangle.h
-	"Figure.h"
-
-1507568789 source:c:\users\eddossan\documents\modelisation\tp04\m_tp04\main.cpp
+1511206256 source:c:\users\edwyn luis\documents\lyon\gamagora\modelisation_geometrique\projetos\modelisation\main.cpp
 	<windows.h>
 	<string>
 	<iostream>
-	"vec3.h"
-	"point3d.h"
-	"figures/Triangle.h"
-	"figures/Circle.h"
+	"figures/data_structure/vec3.h"
+	"figures/data_structure/Point3d.h"
+	"figures/data_structure/Figure.h"
+	"utils/utils.h"
+	"utils/OffFile.h"
 	"figures/Square.h"
-	"figures/Cylinder.h"
-	"figures/Sphere.h"
-	"figures/Cone.h"
-	"utils.h"
-	"OffFile.h"
 	"GL\glut.h"
 	<stdio.h>
 	<math.h>
@@ -153,7 +112,7 @@
 
 1301111162 c:\program files (x86)\codeblocks\mingw\include\winerror.h
 
-1341003176 c:\program files (x86)\codeblocks\mingw\include\string.h
+1341006776 c:\program files (x86)\codeblocks\mingw\include\string.h
 	<_mingw.h>
 	<stddef.h>
 
@@ -223,7 +182,7 @@
 
 1301111158 c:\program files (x86)\codeblocks\mingw\include\rpcnterr.h
 
-1341003172 c:\program files (x86)\codeblocks\mingw\include\excpt.h
+1341006772 c:\program files (x86)\codeblocks\mingw\include\excpt.h
 	<_mingw.h>
 	<windef.h>
 
@@ -285,7 +244,7 @@
 	<objidl.h>
 	<cguid.h>
 
-1341003176 c:\program files (x86)\codeblocks\mingw\include\stdlib.h
+1341006776 c:\program files (x86)\codeblocks\mingw\include\stdlib.h
 	<_mingw.h>
 	<stddef.h>
 
@@ -306,7 +265,11 @@
 1301111156 c:\program files (x86)\codeblocks\mingw\include\oleidl.h
 	<objfwd.h>
 
-1505748166 c:\program files (x86)\codeblocks\mingw\include\gl\glut.h
+1511100007 c:\users\edwyn luis\documents\lyon\gamagora\modelisation_geometrique\projetos\modelisation\utils\offfile.h
+	"../figures/data_structure/Figure.h"
+	<string>
+
+1505751768 c:\program files (x86)\codeblocks\mingw\include\gl\glut.h
 	<windows.h>
 	<GL/gl.h>
 	<GL/glu.h>
@@ -317,47 +280,41 @@
 	<stddef.h>
 	<GL/gl.h>
 
-1341003176 c:\program files (x86)\codeblocks\mingw\include\stdio.h
+1341006776 c:\program files (x86)\codeblocks\mingw\include\stdio.h
 	<_mingw.h>
 	<stddef.h>
 	<stdarg.h>
 	<sys/types.h>
 
-1341003180 c:\program files (x86)\codeblocks\mingw\include\sys\types.h
+1341006780 c:\program files (x86)\codeblocks\mingw\include\sys\types.h
 	<_mingw.h>
 	<stddef.h>
 
-1507284222 source:c:\users\eddossan\documents\modelisation\tp04\m_tp04\point3d.cpp
-	"point3d.h"
-	"utils.h"
-
-1507302988 source:c:\users\eddossan\documents\modelisation\tp04\m_tp04\utils.cpp
-	"utils.h"
-
-1507285380 source:c:\users\eddossan\documents\modelisation\tp04\m_tp04\vec3.cpp
-	"vec3.h"
-	"math.h"
-	"utils.h"
-
-1507567286 source:c:\users\eddossan\documents\modelisation\tp04\m_tp04\figures\figure.cpp
-	"Figure.h"
-
-1507560757 source:c:\users\eddossan\documents\modelisation\tp04\m_tp04\figures\point.cpp
-	"Point.h"
-
-1507560728 c:\users\eddossan\documents\modelisation\tp04\m_tp04\figures\point.h
-	"../vec3.h"
-
-1507568664 source:c:\users\eddossan\documents\modelisation\tp04\m_tp04\offfile.cpp
+1511206902 source:c:\users\edwyn luis\documents\lyon\gamagora\modelisation_geometrique\projetos\modelisation\utils\offfile.cpp
 	"OffFile.h"
 	<iostream>
 	<fstream>
 	<deque>
+	<climits>
 	"utils.h"
-	"vec3.h"
-	"figures/FigureFace.h"
+	"../figures/data_structure/vec3.h"
+	"../figures/data_structure/FigureFace.h"
 
-1507568495 c:\users\eddossan\documents\modelisation\tp04\m_tp04\offfile.h
-	"figures/Figure.h"
-	<string>
+1511098182 source:c:\users\edwyn luis\documents\lyon\gamagora\modelisation_geometrique\projetos\modelisation\utils\utils.cpp
+	"utils.h"
+
+1511206635 c:\users\edwyn luis\documents\lyon\gamagora\modelisation_geometrique\projetos\modelisation\figures\data_structure\edge.h
+	"Point3d.h"
+	"FigureFace.h"
+	<deque>
+
+1511206684 source:c:\users\edwyn luis\documents\lyon\gamagora\modelisation_geometrique\projetos\modelisation\figures\data_structure\edge.cpp
+	"Edge.h"
+
+1511204351 source:c:\users\edwyn luis\documents\lyon\gamagora\modelisation_geometrique\projetos\modelisation\figures\square.cpp
+	"Square.h"
+	"../utils/utils.h"
+
+1511203070 c:\users\edwyn luis\documents\lyon\gamagora\modelisation_geometrique\projetos\modelisation\figures\square.h
+	"data_structure/Figure.h"
 
