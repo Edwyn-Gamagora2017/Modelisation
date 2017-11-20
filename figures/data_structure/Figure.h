@@ -49,7 +49,7 @@ protected:
 	void setInverseNormal(bool inverseNormal);
 	void setDoubleSense(bool doubleSense);
 
-	bool hasEdge( Point3d * pA, Point3d * pB );
+	Edge* hasEdge( Point3d * pA, Point3d * pB );
 
 	virtual void generatePointsAndFaces();
 };

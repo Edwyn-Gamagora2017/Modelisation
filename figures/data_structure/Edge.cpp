@@ -19,6 +19,25 @@ bool Edge::hasPoint( Point3d * p ){
 bool Edge::hasPoints( Point3d * p1, Point3d * p2 ){
     return this->hasPoint( p1 ) && this->hasPoint( p2 );
 }
+/*
+Face
+*/
+bool Edge::isAssociatedTo(FigureFace * f){
+    if( f != NULL ){
+        for( int i = 0; i<this->faces.size(); i++ ){
+            if (this->faces[i]->getIndex() == f->getIndex()){
+                return true;
+            }
+        }
+    }
+
+    return false;
+}
+void Edge::associateTo(FigureFace * f){
+    if( !this->isAssociatedTo( f ) ){
+        this->faces.push_back( f );
+    }
+}
 
 /* GETTERS */
 Point3d * Edge::getPointA(){
@@ -26,6 +45,9 @@ Point3d * Edge::getPointA(){
 }
 Point3d * Edge::getPointB(){
     return this->pointB;
+}
+std::deque<FigureFace *> Edge::getFaces(){
+    return this->faces;
 }
 int Edge::getIndex(){
     return this->index;

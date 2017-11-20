@@ -66,13 +66,13 @@ std::deque<FigureFace*> Figure::getFaces()
     return this->faces;
 }
 
-bool Figure::hasEdge( Point3d * pA, Point3d * pB ){
+Edge * Figure::hasEdge( Point3d * pA, Point3d * pB ){
     for(int i=0; i<this->edges.size(); i++){
         if( this->edges[i]->hasPoints( pA, pB ) ){
-            return true;
+            return this->edges[i];
         }
     }
-    return false;
+    return NULL;
 }
 void Figure::setPoints(std::deque< Point3d* > points)
 {
@@ -88,10 +88,14 @@ void Figure::setFaces( std::deque< FigureFace* > faces )
         for(int j=0; j<pointsFace.size(); j++){
             Point3d * p1 = pointsFace[j];
             Point3d * p2 = pointsFace[(j+1)%pointsFace.size()];
-            if( !this->hasEdge( p1, p2 ) ){
-                this->edges.push_back( new Edge( p1, p2, this->edges.size() ) );
+
+            Edge * existingEdge = this->hasEdge( p1, p2 );
+            if( existingEdge == NULL ){
+                existingEdge = new Edge( p1, p2, this->edges.size() );
+                this->edges.push_back( existingEdge );
             }
-            // TODO Associate Edge
+            // Associate Edge to face
+            existingEdge->associateTo( this->faces[i] );
         }
     }
 }

@@ -2,15 +2,23 @@
 
 #include <math.h>
 
-FigureFace::FigureFace(std::deque<Point3d *> points, vec3 normal)
+FigureFace::FigureFace(std::deque<Point3d *> points, vec3 normal, int index )
 {
     this->points = points;
     this->normal = normal;
+    this->index = index;
+    // Associate Face to Points
+    for(int i=0; i<this->points.size(); i++){
+        this->points[i]->associateTo( this );
+    }
 }
 
 std::deque<Point3d*> FigureFace::getPoints()
 {
     return this->points;
+}
+int FigureFace::getIndex(){
+    return this->index;
 }
 
 FigureFace::~FigureFace()
@@ -18,7 +26,7 @@ FigureFace::~FigureFace()
 
 }
 
-FigureFace* FigureFace::TriangleFigureFaceBasic(Point3d* pointA, Point3d* pointB, Point3d* pointC, bool inverseNormal)
+FigureFace* FigureFace::TriangleFigureFaceBasic(Point3d* pointA, Point3d* pointB, Point3d* pointC, bool inverseNormal, int index)
 {
     /*
     C
@@ -34,18 +42,18 @@ FigureFace* FigureFace::TriangleFigureFaceBasic(Point3d* pointA, Point3d* pointB
     pointsT.push_back( pointA );
     vec3 normalTriangle = pointB->vectorFrom(*pointA).produitVectoriel( pointC->vectorFrom(*pointA) ).normalized();
 
-    return new FigureFace( pointsT, (inverseNormal?normalTriangle.negative():normalTriangle) );
+    return new FigureFace( pointsT, (inverseNormal?normalTriangle.negative():normalTriangle), index );
 }
 
-std::deque<FigureFace*> FigureFace::TriangleFigureFace(Point3d* pointA, Point3d* pointB, Point3d* pointC, bool inverseNormal, bool doubleSense)
+std::deque<FigureFace*> FigureFace::TriangleFigureFace(Point3d* pointA, Point3d* pointB, Point3d* pointC, bool inverseNormal, bool doubleSense, int index)
 {
     std::deque<FigureFace*> result;
-    result.push_back( FigureFace::TriangleFigureFaceBasic( pointA, pointB, pointC, inverseNormal ) );
-    if(doubleSense) result.push_back( FigureFace::TriangleFigureFaceBasic( pointA, pointB, pointC, !inverseNormal ) );
+    result.push_back( FigureFace::TriangleFigureFaceBasic( pointA, pointB, pointC, inverseNormal, index ) );
+    if(doubleSense) result.push_back( FigureFace::TriangleFigureFaceBasic( pointA, pointB, pointC, !inverseNormal, index ) );
     return result;
 }
 
-std::deque<FigureFace*> FigureFace::SquareFigureFace( Point3d * pointA, Point3d * pointB, Point3d * pointC, Point3d * pointD, bool inverseNormal, bool doubleSense )
+std::deque<FigureFace*> FigureFace::SquareFigureFace( Point3d * pointA, Point3d * pointB, Point3d * pointC, Point3d * pointD, bool inverseNormal, bool doubleSense, int index )
 {
     /*
     C--D
@@ -53,14 +61,14 @@ std::deque<FigureFace*> FigureFace::SquareFigureFace( Point3d * pointA, Point3d 
     A--B
     */
     std::deque<FigureFace*> result;
-    std::deque<FigureFace*> t1 = TriangleFigureFace( pointA, pointB, pointC, inverseNormal, doubleSense );
-    std::deque<FigureFace*> t2 = TriangleFigureFace( pointC, pointB, pointD, inverseNormal, doubleSense );
+    std::deque<FigureFace*> t1 = TriangleFigureFace( pointA, pointB, pointC, inverseNormal, doubleSense, index );
+    std::deque<FigureFace*> t2 = TriangleFigureFace( pointC, pointB, pointD, inverseNormal, doubleSense, index );
     result.insert( result.end(), t1.begin(), t1.end() );
     result.insert( result.end(), t2.begin(), t2.end() );
     return result;
 }
 
-std::deque<FigureFace*> FigureFace::SectionFigureFace( std::deque<Point3d*> pointsA, std::deque<Point3d*> pointsB, bool closed, bool inverseNormal, bool doubleSense )
+std::deque<FigureFace*> FigureFace::SectionFigureFace( std::deque<Point3d*> pointsA, std::deque<Point3d*> pointsB, bool closed, bool inverseNormal, bool doubleSense, int index )
 {
     /*
     B1--B2
@@ -71,13 +79,13 @@ std::deque<FigureFace*> FigureFace::SectionFigureFace( std::deque<Point3d*> poin
     int amountPoints = std::min( pointsA.size(), pointsB.size() );
     for( int i = 0; i < amountPoints-(closed?0:1); i++ )
     {
-        std::deque<FigureFace*> faces = SquareFigureFace( pointsA[i], pointsA[(i+1)%amountPoints], pointsB[i], pointsB[(i+1)%amountPoints], inverseNormal, doubleSense );
+        std::deque<FigureFace*> faces = SquareFigureFace( pointsA[i], pointsA[(i+1)%amountPoints], pointsB[i], pointsB[(i+1)%amountPoints], inverseNormal, doubleSense, index );
         result.insert( result.end(), faces.begin(), faces.end() );
     }
     return result;
 }
 
-std::deque<FigureFace*> FigureFace::CouvercleFigureFace( std::deque<Point3d*> points, bool inverseNormal, bool doubleSense, bool cutCenter )
+std::deque<FigureFace*> FigureFace::CouvercleFigureFace( std::deque<Point3d*> points, bool inverseNormal, bool doubleSense, bool cutCenter, int index )
 {
     /*
          P2
@@ -91,7 +99,7 @@ std::deque<FigureFace*> FigureFace::CouvercleFigureFace( std::deque<Point3d*> po
     Point3d * centerPoint = points[ points.size() ];
     for( int i = 0; i < points.size()-(cutCenter?0:1); i++ )
     {
-        std::deque<FigureFace*> t = TriangleFigureFace( centerPoint, points[i], points[(i+1)%points.size()], inverseNormal, doubleSense );
+        std::deque<FigureFace*> t = TriangleFigureFace( centerPoint, points[i], points[(i+1)%points.size()], inverseNormal, doubleSense, index );
         result.insert( result.end(), t.begin(), t.end() );
     }
     return result;

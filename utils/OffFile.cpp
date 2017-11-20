@@ -44,7 +44,7 @@ Figure * OffFile::readFile( string filename )
         {
             // Normal from the fist points
             vec3 normal = pointsFace[1]->toVector().soustraction( pointsFace[0]->toVector() ).produitVectoriel( pointsFace[2]->toVector().soustraction( pointsFace[0]->toVector() ) );
-            faces.push_back( new FigureFace( pointsFace, normal ) );
+            faces.push_back( new FigureFace( pointsFace, normal, i ) );
         }
 	}
 
@@ -89,5 +89,6 @@ void OffFile::writeFile( Figure * f, string filename )
 void OffFile::printInfo( Figure * f )
 {
 	cout << "Vertices: " << f->getPoints().size() << std::endl;
-	cout << "Edges: " << f->getFaces().size() << std::endl;
+	cout << "Edges: " << f->getEdges().size() << std::endl;
+	cout << "Faces: " << f->getFaces().size() << std::endl;
 }

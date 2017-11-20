@@ -59,6 +59,26 @@ Point3d Point3d::fromVector(vec3 vect, int index)
 }
 
 /*
+Face
+*/
+bool Point3d::isAssociatedTo(FigureFace * f){
+    if( f != NULL ){
+        for( int i = 0; i<this->faces.size(); i++ ){
+            if (this->faces[i]->getIndex() == f->getIndex()){
+                return true;
+            }
+        }
+    }
+
+    return false;
+}
+void Point3d::associateTo(FigureFace * f){
+    if( !this->isAssociatedTo( f ) ){
+        this->faces.push_back( f );
+    }
+}
+
+/*
 Edge
 */
 bool Point3d::isAssociatedTo(Edge * e){

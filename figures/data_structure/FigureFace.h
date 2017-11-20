@@ -16,18 +16,19 @@ class FigureFace
 	int index;
 
     public:
-        FigureFace( std::deque<Point3d *> points, vec3 normal );
+        FigureFace( std::deque<Point3d *> points, vec3 normal, int index = -1 );
         virtual ~FigureFace();
 
-        static std::deque<FigureFace *> TriangleFigureFace( Point3d * pointA, Point3d * pointB, Point3d * pointC, bool inverseNormal, bool doubleSense );
-        static std::deque<FigureFace *> SquareFigureFace( Point3d * pointA, Point3d * pointB, Point3d * pointC, Point3d * pointD, bool inverseNormal, bool doubleSense );
-        static std::deque<FigureFace *> SectionFigureFace( std::deque<Point3d*> pointsA, std::deque<Point3d*> pointsB, bool closed, bool inverseNormal, bool doubleSense );
-        static std::deque<FigureFace *> CouvercleFigureFace( std::deque<Point3d*> points, bool inverseNormal, bool doubleSense, bool cutCenter );  // the center is the last element in the list
+        static std::deque<FigureFace *> TriangleFigureFace( Point3d * pointA, Point3d * pointB, Point3d * pointC, bool inverseNormal, bool doubleSense, int index = -1 );
+        static std::deque<FigureFace *> SquareFigureFace( Point3d * pointA, Point3d * pointB, Point3d * pointC, Point3d * pointD, bool inverseNormal, bool doubleSense, int index = -1 );
+        static std::deque<FigureFace *> SectionFigureFace( std::deque<Point3d*> pointsA, std::deque<Point3d*> pointsB, bool closed, bool inverseNormal, bool doubleSense, int index = -1 );
+        static std::deque<FigureFace *> CouvercleFigureFace( std::deque<Point3d*> points, bool inverseNormal, bool doubleSense, bool cutCenter, int index = -1 );  // the center is the last element in the list
 
         std::deque<Point3d *> getPoints();
+        int getIndex();
 
     private:
-        static FigureFace * TriangleFigureFaceBasic( Point3d * pointA, Point3d * pointB, Point3d * pointC, bool inverseNormal );
+        static FigureFace * TriangleFigureFaceBasic( Point3d * pointA, Point3d * pointB, Point3d * pointC, bool inverseNormal, int index = -1 );
 };
 
 #endif // FIGUREFACE_H
