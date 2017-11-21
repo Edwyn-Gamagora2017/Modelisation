@@ -167,4 +167,65 @@ void Figure::normalizeFigure()
     }
 }
 
+void Figure::printInfo(){
+    std::deque<Point3d*> points = this->getPoints();
+	std::cout << "Vertices: " << points.size() << std::endl;
+
+	std::deque<Edge*> edges = this->getEdges();
+	std::cout << "Edges: " << edges.size() << std::endl;
+
+    std::deque<FigureFace*> faces = this->getFaces();
+	std::cout << "Faces: " << faces.size() << std::endl;
+
+	// Edges per Face
+	int maxEdgesPerFace = 0;
+	int minEdgesPerFace = INT_MAX;
+	for(int i=0; i<faces.size(); i++){
+        int countEdges = faces[i]->getEdgesCount();
+        if( countEdges > maxEdgesPerFace ){
+            maxEdgesPerFace = countEdges;
+        }
+        if( countEdges < minEdgesPerFace ){
+            minEdgesPerFace = countEdges;
+        }
+    }
+	std::cout << "Max Edges per Face: " << maxEdgesPerFace << std::endl;
+	std::cout << "Min Edges per Face: " << minEdgesPerFace << std::endl;
+
+	// Edges per Vertex
+	int maxEdgesPerVertex = 0;
+	int minEdgesPerVertex = INT_MAX;
+    for(int i=0; i<points.size(); i++){
+        int countEdges = points[i]->getEdgesCount();
+        if( countEdges > maxEdgesPerVertex ){
+            maxEdgesPerVertex = countEdges;
+        }
+        if( countEdges < minEdgesPerVertex ){
+            minEdgesPerVertex = countEdges;
+        }
+    }
+	std::cout << "Max Edges per Vertex: " << maxEdgesPerVertex << std::endl;
+	std::cout << "Min Edges per Vertex: " << minEdgesPerVertex << std::endl;
+
+	// Shared Edges
+    int edgeSharedByZeroFace = 0;
+    int edgeSharedByOneFace = 0;
+    int edgeSharedByTwoFaces = 0;
+    for(int i=0; i<edges.size(); i++){
+        int countFaces = edges[i]->getFacesCount();
+        if( countFaces == 2 ){
+            edgeSharedByTwoFaces++;
+        } else
+        if( countFaces == 1 ){
+            edgeSharedByOneFace++;
+        } else
+        if( countFaces == 0 ){
+            edgeSharedByZeroFace++;
+        }
+    }
+    std::cout << "Edges shared by 0 face: " << edgeSharedByZeroFace << std::endl;
+	std::cout << "Edges shared by 1 face: " << edgeSharedByOneFace << std::endl;
+	std::cout << "Edges shared by 2 faces: " << edgeSharedByTwoFaces << std::endl;
+}
+
 void Figure::generatePointsAndFaces(){}

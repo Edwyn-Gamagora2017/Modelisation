@@ -27,6 +27,7 @@ class FigureFace
         std::deque<Point3d *> getPoints();
         std::deque<Edge *> getEdges();
         int getEdgesCount();
+        vec3 getNormal();
         int getIndex();
 
         // Edges

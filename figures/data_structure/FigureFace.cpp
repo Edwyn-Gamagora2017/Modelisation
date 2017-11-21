@@ -25,6 +25,9 @@ std::deque<Edge*> FigureFace::getEdges()
 int FigureFace::getEdgesCount(){
     return this->edges.size();
 }
+vec3 FigureFace::getNormal(){
+    return this->normal;
+}
 int FigureFace::getIndex(){
     return this->index;
 }

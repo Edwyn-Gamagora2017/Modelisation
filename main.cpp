@@ -48,6 +48,8 @@ float tx=0.0;
 float ty=0.0;
 float tz=0.0;
 
+vec3 lightPosition( 2, 2, 0 );
+
 void drawFigureFaces( Figure * f, GLenum mode, Point3d * couleur = new Point3d(0,0,0,-1) ){
 	std::deque<FigureFace*> faces = f->getFaces();
 	vec3 * scale = f->getScale();
@@ -62,10 +64,17 @@ void drawFigureFaces( Figure * f, GLenum mode, Point3d * couleur = new Point3d(0
         //glBegin(GL_POLYGON);
         glBegin(mode);
 
-        glColor3f(couleur->getX(), couleur->getY(), couleur->getZ());
         for(int j=0; j< faces[i]->getPoints().size(); j++)
         {
             Point3d * p = faces[i]->getPoints()[j];
+
+            // Color based on light
+            float lightFactor = lightPosition.soustraction( p->toVector() ).normalized().produitScalaire( faces[i]->getNormal().normalized() );
+            if( lightFactor < 0.1f ){
+                // simulating environment light
+                lightFactor = 0.1f;
+            }
+            glColor3f(lightFactor*couleur->getX(), lightFactor*couleur->getY(), lightFactor*couleur->getZ());
 
             glVertex3f(
               /*(p->getX()*scale->getX())+translation->getX(),
@@ -93,9 +102,9 @@ bool normalInverse = false;
 bool doubleSense = false;
 int selectedFigure = 0;
 
-Point3d * color_white   = new Point3d(255,255,255,-1);
-Point3d * color_yellow  = new Point3d(255,255,0,-1);
-Point3d * color_red     = new Point3d(255,0,0,-1);
+Point3d * color_white   = new Point3d(1,1,1,-1);
+Point3d * color_yellow  = new Point3d(1,1,0,-1);
+Point3d * color_red     = new Point3d(1,0,0,-1);
 Point3d * color_black   = new Point3d(0,0,0,-1);
 
 Figure * f;
@@ -114,7 +123,7 @@ void createFigure()
         case 4: default: f    = OffFile::readFile( "maillages/test" ); break;
     }
 
-    OffFile::printInfo( f );
+    f->printInfo();
 }
 
 /* initialisation d'OpenGL*/

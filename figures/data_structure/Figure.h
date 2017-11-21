@@ -41,6 +41,8 @@ public:
     void centralizeFigure();
     void normalizeFigure();
 
+    void printInfo();
+
 protected:
     void setRotation(vec3 * rotation);
 	void setScale(vec3 * scale);
