@@ -168,6 +168,8 @@ void Figure::normalizeFigure()
 }
 
 void Figure::printInfo(){
+    std::cout << "========================" << std::endl << std::endl;
+
     std::deque<Point3d*> points = this->getPoints();
 	std::cout << "Vertices: " << points.size() << std::endl;
 
@@ -226,6 +228,15 @@ void Figure::printInfo(){
     std::cout << "Edges shared by 0 face: " << edgeSharedByZeroFace << std::endl;
 	std::cout << "Edges shared by 1 face: " << edgeSharedByOneFace << std::endl;
 	std::cout << "Edges shared by 2 faces: " << edgeSharedByTwoFaces << std::endl;
+	std::cout << "========================" << std::endl << std::endl;
+}
+
+void Figure::removeFace( int index ){
+    if( index < this->faces.size() ){
+        FigureFace * f = this->faces[index];
+        this->faces.erase( this->faces.begin()+index );
+        delete( f );
+    }
 }
 
 void Figure::generatePointsAndFaces(){}

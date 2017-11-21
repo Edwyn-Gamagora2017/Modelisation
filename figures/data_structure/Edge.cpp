@@ -38,6 +38,18 @@ void Edge::associateTo(FigureFace * f){
         this->faces.push_back( f );
     }
 }
+void Edge::disassociateTo(FigureFace * f){
+    f->removeEdge( this );
+
+    for(int i=0; i<this->faces.size(); i++){
+        if( this->faces[i]->getIndex() == f->getIndex() ){
+            this->faces.erase( this->faces.begin()+i );
+            break;
+        }
+    }
+
+    // TODO verify the need of this edge (if no more faces) and delete it
+}
 
 /* GETTERS */
 Point3d * Edge::getPointA(){

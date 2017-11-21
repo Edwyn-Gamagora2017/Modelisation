@@ -34,6 +34,7 @@ class Edge
         // Faces
         bool isAssociatedTo(FigureFace * f);
         void associateTo(FigureFace * f);
+        void disassociateTo(FigureFace * f);
 
         /* GETTERS */
         Point3d * getPointA();

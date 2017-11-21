@@ -33,6 +33,10 @@ class FigureFace
         // Edges
         bool hasEdge(Edge * e);
         void includeEdge(Edge * e);
+        void removeEdge(Edge * e);
+
+        // Points
+        void removeVertex(Point3d * p);
 
     private:
         static FigureFace * TriangleFigureFaceBasic( Point3d * pointA, Point3d * pointB, Point3d * pointC, bool inverseNormal, int index = -1 );

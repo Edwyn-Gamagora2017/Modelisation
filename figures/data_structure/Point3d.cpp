@@ -80,6 +80,19 @@ void Point3d::associateTo(FigureFace * f){
         this->faces.push_back( f );
     }
 }
+void Point3d::disassociateTo(FigureFace * f){
+    f->removeVertex( this );
+
+    for(int i=0; i<this->faces.size(); i++){
+        if( this->faces[i]->getIndex() == f->getIndex() ){
+            this->faces.erase( this->faces.begin()+i );
+            break;
+        }
+    }
+
+    // IMPORTANT do not delete it when there is no faces because it breaks index system
+    // TODO index independent
+}
 
 /*
 Edge

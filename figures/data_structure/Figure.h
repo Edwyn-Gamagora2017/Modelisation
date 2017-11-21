@@ -42,6 +42,7 @@ public:
     void normalizeFigure();
 
     void printInfo();
+    void removeFace( int index );
 
 protected:
     void setRotation(vec3 * rotation);

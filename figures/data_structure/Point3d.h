@@ -49,6 +49,7 @@ public:
 	// Faces
 	bool isAssociatedTo(FigureFace * f);
 	void associateTo(FigureFace * f);
+	void disassociateTo(FigureFace * f);
 
 	// Edges
 	bool isAssociatedTo(Edge * e);

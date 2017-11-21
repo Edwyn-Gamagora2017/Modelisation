@@ -48,7 +48,7 @@ float tx=0.0;
 float ty=0.0;
 float tz=0.0;
 
-vec3 lightPosition( 2, 2, 0 );
+vec3 lightPosition( 2, 0, 0 );
 
 void drawFigureFaces( Figure * f, GLenum mode, Point3d * couleur = new Point3d(0,0,0,-1) ){
 	std::deque<FigureFace*> faces = f->getFaces();
@@ -289,6 +289,15 @@ GLvoid window_key_down(unsigned char key, int x, int y)  //appuie des touches
         case 'w':
             printf ("Saving the mesh to 'maillaged/test'\n");
             OffFile::writeFile( f, "maillages/test" );
+        break;
+        // Remove faces
+        case 'r':{
+            printf ("Removing Faces from the Figure\n");
+            int indexToRemove = 10;
+            int amountToRemove = 10;
+            for( int i=0; i<amountToRemove && indexToRemove<f->getFaces().size(); i++ ){
+                f->removeFace( indexToRemove );
+            }}
         break;
 
     //sortie

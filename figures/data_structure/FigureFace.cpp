@@ -34,7 +34,12 @@ int FigureFace::getIndex(){
 
 FigureFace::~FigureFace()
 {
-
+    for( int i=0; i<this->edges.size(); i++ ){
+        this->edges[i]->disassociateTo( this );
+    }
+    for( int i=0; i<this->points.size(); i++ ){
+        this->points[i]->disassociateTo( this );
+    }
 }
 
  // Edges
@@ -49,6 +54,24 @@ bool FigureFace::hasEdge(Edge * e){
 void FigureFace::includeEdge(Edge * e){
     if( !this->hasEdge( e ) ){
         this->edges.push_back( e );
+    }
+}
+void FigureFace::removeEdge(Edge * e){
+    for(int i=0; i<this->edges.size(); i++){
+        if( this->edges[i]->getIndex() == e->getIndex() ){
+            this->edges.erase( this->edges.begin()+i );
+            break;
+        }
+    }
+}
+
+// Vertex
+void FigureFace::removeVertex(Point3d * p){
+    for(int i=0; i<this->points.size(); i++){
+        if( this->points[i]->getIndex() == p->getIndex() ){
+            this->points.erase( this->points.begin()+i );
+            break;
+        }
     }
 }
 
