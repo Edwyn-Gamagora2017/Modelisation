@@ -54,6 +54,10 @@
 		</Linker>
 		<Unit filename="figures/Square.cpp" />
 		<Unit filename="figures/Square.h" />
+		<Unit filename="figures/Surface.cpp" />
+		<Unit filename="figures/Surface.h" />
+		<Unit filename="figures/data_structure/Curve.cpp" />
+		<Unit filename="figures/data_structure/Curve.h" />
 		<Unit filename="figures/data_structure/Edge.cpp" />
 		<Unit filename="figures/data_structure/Edge.h" />
 		<Unit filename="figures/data_structure/Figure.cpp" />

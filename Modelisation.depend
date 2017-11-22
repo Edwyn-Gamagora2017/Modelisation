@@ -28,10 +28,10 @@
 	<math.h>
 	<iostream>
 
-1341006774 c:\program files (x86)\codeblocks\mingw\include\math.h
+1341003174 c:\program files (x86)\codeblocks\mingw\include\math.h
 	<_mingw.h>
 
-1341006770 c:\program files (x86)\codeblocks\mingw\include\_mingw.h
+1341003170 c:\program files (x86)\codeblocks\mingw\include\_mingw.h
 
 1511288057 source:c:\users\edwyn luis\documents\lyon\gamagora\modelisation_geometrique\projetos\modelisation\figures\data_structure\point3d.cpp
 	"Point3d.h"
@@ -112,7 +112,7 @@
 
 1301111162 c:\program files (x86)\codeblocks\mingw\include\winerror.h
 
-1341006776 c:\program files (x86)\codeblocks\mingw\include\string.h
+1341003176 c:\program files (x86)\codeblocks\mingw\include\string.h
 	<_mingw.h>
 	<stddef.h>
 
@@ -182,7 +182,7 @@
 
 1301111158 c:\program files (x86)\codeblocks\mingw\include\rpcnterr.h
 
-1341006772 c:\program files (x86)\codeblocks\mingw\include\excpt.h
+1341003172 c:\program files (x86)\codeblocks\mingw\include\excpt.h
 	<_mingw.h>
 	<windef.h>
 
@@ -244,7 +244,7 @@
 	<objidl.h>
 	<cguid.h>
 
-1341006776 c:\program files (x86)\codeblocks\mingw\include\stdlib.h
+1341003176 c:\program files (x86)\codeblocks\mingw\include\stdlib.h
 	<_mingw.h>
 	<stddef.h>
 
@@ -269,7 +269,7 @@
 	"../figures/data_structure/Figure.h"
 	<string>
 
-1505751768 c:\program files (x86)\codeblocks\mingw\include\gl\glut.h
+1505748166 c:\program files (x86)\codeblocks\mingw\include\gl\glut.h
 	<windows.h>
 	<GL/gl.h>
 	<GL/glu.h>
@@ -280,13 +280,13 @@
 	<stddef.h>
 	<GL/gl.h>
 
-1341006776 c:\program files (x86)\codeblocks\mingw\include\stdio.h
+1341003176 c:\program files (x86)\codeblocks\mingw\include\stdio.h
 	<_mingw.h>
 	<stddef.h>
 	<stdarg.h>
 	<sys/types.h>
 
-1341006780 c:\program files (x86)\codeblocks\mingw\include\sys\types.h
+1341003180 c:\program files (x86)\codeblocks\mingw\include\sys\types.h
 	<_mingw.h>
 	<stddef.h>
 
@@ -317,4 +317,103 @@
 
 1511207128 c:\users\edwyn luis\documents\lyon\gamagora\modelisation_geometrique\projetos\modelisation\figures\square.h
 	"data_structure/Figure.h"
+
+1511357029 source:d:\documents_edwyn\github\modelisation\figures\data_structure\edge.cpp
+	"Edge.h"
+
+1511357029 d:\documents_edwyn\github\modelisation\figures\data_structure\edge.h
+	"Point3d.h"
+	"FigureFace.h"
+	<deque>
+
+1511357029 d:\documents_edwyn\github\modelisation\figures\data_structure\point3d.h
+	"vec3.h"
+	"Edge.h"
+	<deque>
+	<string>
+
+1511357029 d:\documents_edwyn\github\modelisation\figures\data_structure\vec3.h
+	<string>
+
+1511357029 d:\documents_edwyn\github\modelisation\figures\data_structure\figureface.h
+	<deque>
+	"Point3d.h"
+
+1511357029 source:d:\documents_edwyn\github\modelisation\figures\data_structure\figure.cpp
+	"Figure.h"
+	<iostream>
+
+1511357029 d:\documents_edwyn\github\modelisation\figures\data_structure\figure.h
+	"vec3.h"
+	"Point3d.h"
+	"Edge.h"
+	"FigureFace.h"
+	<deque>
+
+1511357029 source:d:\documents_edwyn\github\modelisation\figures\data_structure\figureface.cpp
+	"FigureFace.h"
+	<math.h>
+	<iostream>
+
+1511357029 source:d:\documents_edwyn\github\modelisation\figures\data_structure\point3d.cpp
+	"Point3d.h"
+	"../../utils/utils.h"
+
+1511357029 d:\documents_edwyn\github\modelisation\utils\utils.h
+	<string>
+	<sstream>
+	<iostream>
+
+1511357029 source:d:\documents_edwyn\github\modelisation\figures\data_structure\vec3.cpp
+	"vec3.h"
+	"math.h"
+	"../../utils/utils.h"
+
+1511357029 source:d:\documents_edwyn\github\modelisation\figures\square.cpp
+	"Square.h"
+	"../utils/utils.h"
+
+1511357029 d:\documents_edwyn\github\modelisation\figures\square.h
+	"data_structure/Figure.h"
+
+1511357029 source:d:\documents_edwyn\github\modelisation\main.cpp
+	<windows.h>
+	<string>
+	<iostream>
+	"figures/data_structure/vec3.h"
+	"figures/data_structure/Point3d.h"
+	"figures/data_structure/Figure.h"
+	"utils/utils.h"
+	"utils/OffFile.h"
+	"figures/Square.h"
+	"GL\glut.h"
+	<stdio.h>
+	<math.h>
+	<stdlib.h>
+	<GL/glut.h>
+
+1511357029 d:\documents_edwyn\github\modelisation\utils\offfile.h
+	"../figures/data_structure/Figure.h"
+	<string>
+
+1511357029 source:d:\documents_edwyn\github\modelisation\utils\offfile.cpp
+	"OffFile.h"
+	<iostream>
+	<fstream>
+	<deque>
+	<climits>
+	"utils.h"
+	"../figures/data_structure/vec3.h"
+	"../figures/data_structure/FigureFace.h"
+
+1511357029 source:d:\documents_edwyn\github\modelisation\utils\utils.cpp
+	"utils.h"
+
+1511371444 source:d:\documents_edwyn\github\modelisation\figures\data_structure\curve.cpp
+	"Curve.h"
+
+1511371393 d:\documents_edwyn\github\modelisation\figures\data_structure\curve.h
+	"vec3.h"
+	"Point3d.h"
+	<deque>
 
