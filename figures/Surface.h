@@ -6,6 +6,8 @@
 #include "SurfaceControl.h"
 #include <deque>
 
+typedef enum SurfaceType{ Regle, Parametrique };
+
 class Surface :
     public Figure
 {
@@ -13,9 +15,10 @@ class Surface :
         std::deque< std::deque< Point3d > > controlPoints;
         SurfaceControl * surfaceControl;
         int amountSamples;
+        SurfaceType surfaceType;
 
     public:
-        Surface( std::deque< std::deque< Point3d > > controlPoints, int amountSamples, Point3d * couleur, bool inverseNormal, bool doubleSense );
+        Surface( std::deque< std::deque< Point3d > > controlPoints, SurfaceType surfaceType, int amountSamples, Point3d * couleur, bool inverseNormal, bool doubleSense );
         ~Surface();
 
         SurfaceControl * getSurfaceControl();
@@ -24,6 +27,8 @@ class Surface :
 
     protected:
         virtual void generatePointsAndFaces();
+        void generateSurfaceRegle();
+        void generateSurfaceParametrique();
 };
 
 #endif // SURFACE_H
