@@ -4,6 +4,7 @@
 
 #include <string>
 #include <iostream>
+#include <typeinfo>
 
 #include "figures/data_structure/vec3.h"
 #include "figures/data_structure/Point3d.h"
@@ -12,6 +13,7 @@
 #include "utils/OffFile.h"
 
 #include "figures/Square.h"
+#include "figures/Surface.h"
 
 #include "GL\glut.h"
 
@@ -38,7 +40,6 @@ float angleY=0.0f; //angle de rotation en X de la scene
 
 float pasDeplacement=1.25;
 
-
 //position lumiere
 float xLitePos=0;
 float yLitePos=10;
@@ -50,7 +51,7 @@ float tz=0.0;
 
 vec3 lightPosition( 2, 0, 0 );
 
-void drawFigureFaces( Figure * f, GLenum mode, Point3d * couleur = new Point3d(0,0,0,-1) ){
+void drawFigureFaces( Figure * f, GLenum mode, bool considerLight, Point3d * couleur = new Point3d(0,0,0,-1) ){
 	std::deque<FigureFace*> faces = f->getFaces();
 	vec3 * scale = f->getScale();
     vec3 * translation = f->getTranslation();
@@ -68,13 +69,18 @@ void drawFigureFaces( Figure * f, GLenum mode, Point3d * couleur = new Point3d(0
         {
             Point3d * p = faces[i]->getPoints()[j];
 
-            // Color based on light
-            float lightFactor = lightPosition.soustraction( p->toVector() ).normalized().produitScalaire( faces[i]->getNormal().normalized() );
-            if( lightFactor < 0.1f ){
-                // simulating environment light
-                lightFactor = 0.1f;
+            if( considerLight ){
+                // Color based on light
+                float lightFactor = lightPosition.soustraction( p->toVector() ).normalized().produitScalaire( faces[i]->getNormal().normalized() );
+                if( lightFactor < 0.1f ){
+                    // simulating environment light
+                    lightFactor = 0.1f;
+                }
+                glColor3f(lightFactor*couleur->getX(), lightFactor*couleur->getY(), lightFactor*couleur->getZ());
             }
-            glColor3f(lightFactor*couleur->getX(), lightFactor*couleur->getY(), lightFactor*couleur->getZ());
+            else{
+                glColor3f(couleur->getX(), couleur->getY(), couleur->getZ());
+            }
 
             glVertex3f(
               /*(p->getX()*scale->getX())+translation->getX(),
@@ -100,7 +106,9 @@ int nParallels = 15;
 bool isTube = false;
 bool normalInverse = false;
 bool doubleSense = false;
-int selectedFigure = 0;
+int selectedFigure = 5;
+bool considerLigth = true;
+bool showControlPoints = false;
 
 Point3d * color_white   = new Point3d(1,1,1,-1);
 Point3d * color_yellow  = new Point3d(1,1,0,-1);
@@ -108,19 +116,28 @@ Point3d * color_red     = new Point3d(1,0,0,-1);
 Point3d * color_black   = new Point3d(0,0,0,-1);
 
 Figure * f;
+Figure * fControl;
 
 void createFigure()
 {
     if( f != NULL ) delete f;
+    if( fControl != NULL ) delete fControl;
 
     switch( selectedFigure )
     {
         case 0: f    = OffFile::readFile( "maillages/triceratops" ); break;
-//        case 0: f    = new Square(new vec3(),1,1,color_red,false,false); break;
         case 1: f    = OffFile::readFile( "maillages/max" ); break;
         case 2: f    = OffFile::readFile( "maillages/buddha" ); break;
         case 3: f    = OffFile::readFile( "maillages/bunny" ); break;
-        case 4: default: f    = OffFile::readFile( "maillages/test" ); break;
+        case 4: f    = OffFile::readFile( "maillages/test" ); break;
+        case 5:{
+            Surface * s = Surface::example();
+            fControl = s->getSurfaceControl();
+            f = s;
+        }
+        break;
+        case 6: f    = new Square(new vec3(),1,1,color_red,false,false); break;
+        default:    break;
     }
 
     f->printInfo();
@@ -152,8 +169,14 @@ void display(void)
 	glRotatef(angleX,0.0f,1.0f,0.0f);
 
 	/****** Drawing ********/
-	drawFigureFaces( f, GL_TRIANGLES, f->getCouleur() );
-    drawFigureFaces( f, GL_LINE_STRIP, color_black );
+	drawFigureFaces( f, GL_TRIANGLES, considerLigth, f->getCouleur() );
+    drawFigureFaces( f, GL_LINE_STRIP, considerLigth, color_black );
+    // Control Points
+    glPointSize(10);
+    if( fControl != NULL && showControlPoints ){
+        drawFigureFaces( fControl, GL_POINTS, false, color_red );
+        drawFigureFaces( fControl, GL_LINE_STRIP, false, color_white );
+    }
 
 	//affiche les axes du repere
 		glColor3f(0.0,1.0,0.0); //Y vert
