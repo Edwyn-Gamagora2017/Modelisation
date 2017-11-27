@@ -121,7 +121,10 @@ Figure * fControl;
 void createFigure()
 {
     if( f != NULL ) delete f;
-    if( fControl != NULL ) delete fControl;
+    if( fControl != NULL ){
+        delete fControl;
+        fControl = NULL;
+    }
 
     switch( selectedFigure )
     {
