@@ -236,5 +236,5 @@ Surface * Surface::exampleDirected(){
     controlPointsCurve.push_back( Point3d( 0,0,7, 0 ) );
     controlPoints.push_back( controlPointsCurve );
 
-    return new Surface( controlPoints, Directed, 5, new Point3d(1,1,0, 0), false, true );
+    return new Surface( controlPoints, Directed, 15, new Point3d(1,1,0, 0), false, true );
 }
