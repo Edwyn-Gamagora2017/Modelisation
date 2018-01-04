@@ -21,7 +21,7 @@ SurfaceControl * Surface::getSurfaceControl(){
     return this->surfaceControl;
 }
 
-void Surface::generateSurfaceParametrique(){
+void Surface::generateCarreParametrique(){
     std::deque< std::deque< Point3d > > guidelines; // Bezier curves
 
     // Obtaining guidelines based on control points
@@ -40,18 +40,23 @@ void Surface::generateSurfaceParametrique(){
 
     // Obtaining resulting curves based on guidelines
     // curves created by Casteljau's curve
-    for( int i=0; i<guidelines.size(); i++ ){
+    int nPointsPerGuideline = guidelines[0].size();
+    for( int i=0; i<nPointsPerGuideline; i++ ){
         // Calculating curve and storing in guidelines
         int initialIndex = this->points.size();
-        std::deque< vec3 > curve = Curve::casteljau( this->controlPoints[i], this->amountSamples );
+        std::deque< Point3d > guidelinePoints;
+        for( int j = 0; j < guidelines.size(); j++){
+            guidelinePoints.push_back( guidelines[j][i] );
+        }
+        std::deque< vec3 > curve = Curve::casteljau( guidelinePoints, this->amountSamples );
         for( int j = 0; j < curve.size(); j++ ){
             this->points.push_back( new Point3d( curve[j].getX(), curve[j].getY(), curve[j].getZ(), initialIndex+j ) );
         }
     }
 
     // Faces
-    for( int i=0; i<this->controlPoints.size()-1; i++ ){
-        int nPointsPerCurve = this->amountSamples+2;
+    int nPointsPerCurve = this->amountSamples+2;
+    for( int i=0; i<nPointsPerCurve-1; i++ ){
         int indexStartSup = i*nPointsPerCurve;
         int indexStartInf = (i+1)*nPointsPerCurve;
         int indexEndSup = indexStartInf;
@@ -66,7 +71,7 @@ void Surface::generateSurfaceParametrique(){
     }
 }
 
-void Surface::generateSurfaceRegle(){
+void Surface::generatePointsRegle(){
     // points created by Casteljau's curve
     for( int i=0; i<this->controlPoints.size(); i++ ){
         int initialIndex = this->points.size();
@@ -96,19 +101,20 @@ void Surface::generateSurfaceRegle(){
 void Surface::generatePointsAndFaces(){
     switch( this->surfaceType ){
     case Regle:
-        this->generateSurfaceRegle();
+        this->generatePointsRegle();
         break;
     case Parametrique: default:
-        this->generateSurfaceParametrique();
+        this->generateCarreParametrique();
         break;
     }
+    //this->generateSurface();
 
     // TODO SetFaces to generate Edges
     this->centralizeFigure();
 	this->normalizeFigure();
 }
 
-Surface * Surface::example(){
+Surface * Surface::exampleCasteljau(){
     std::deque< std::deque< Point3d > > controlPoints;
     std::deque< Point3d > controlPointsCurve;
 
@@ -135,5 +141,23 @@ Surface * Surface::example(){
     controlPointsCurve.push_back( Point3d( 3,2,0, 0 ) );
     controlPoints.push_back( controlPointsCurve );
 
-    return new Surface( controlPoints, Regle, 5, new Point3d(1,1,0, 0), false, true );
+    return new Surface( controlPoints, Parametrique, 5, new Point3d(1,1,0, 0), false, true );
+}
+
+Surface * Surface::exampleRegle(){
+    std::deque< std::deque< Point3d > > controlPoints;
+    std::deque< Point3d > controlPointsCurve;
+
+    controlPointsCurve.push_back( Point3d( 0,0,1, 0 ) );
+    controlPointsCurve.push_back( Point3d( 0,1,1, 0 ) );
+    controlPointsCurve.push_back( Point3d( 0,2,0, 0 ) );
+    controlPoints.push_back( controlPointsCurve );
+
+    controlPointsCurve.clear();
+    controlPointsCurve.push_back( Point3d( 1,0,0, 0 ) );
+    controlPointsCurve.push_back( Point3d( 1,1,1, 0 ) );
+    controlPointsCurve.push_back( Point3d( 1,2,2, 0 ) );
+    controlPoints.push_back( controlPointsCurve );
+
+    return new Surface( controlPoints, Parametrique, 5, new Point3d(1,1,0, 0), false, true );
 }

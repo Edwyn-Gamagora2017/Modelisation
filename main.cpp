@@ -121,7 +121,10 @@ Figure * fControl;
 void createFigure()
 {
     if( f != NULL ) delete f;
-    if( fControl != NULL ) delete fControl;
+    if( fControl != NULL ){
+        delete fControl;
+        fControl = NULL;
+    }
 
     switch( selectedFigure )
     {
@@ -131,12 +134,16 @@ void createFigure()
         case 3: f    = OffFile::readFile( "maillages/bunny" ); break;
         case 4: f    = OffFile::readFile( "maillages/test" ); break;
         case 5:{
-            Surface * s = Surface::example();
+            Surface * s = Surface::exampleCasteljau();
             fControl = s->getSurfaceControl();
             f = s;
         }
         break;
-        case 6: f    = new Square(new vec3(),1,1,color_red,false,false); break;
+        case 6:{
+            Surface * s = Surface::exampleRegle();
+            fControl = s->getSurfaceControl();
+            f = s;
+        }
         default:    break;
     }
 

@@ -23,12 +23,14 @@ class Surface :
 
         SurfaceControl * getSurfaceControl();
 
-        static Surface * example();
+        static Surface * exampleCasteljau();
+        static Surface * exampleRegle();
 
     protected:
         virtual void generatePointsAndFaces();
-        void generateSurfaceRegle();
-        void generateSurfaceParametrique();
+        void generatePointsRegle();
+        void generateCarreParametrique();
+        void generateSurface();
 };
 
 #endif // SURFACE_H
