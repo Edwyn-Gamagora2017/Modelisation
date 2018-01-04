@@ -6,7 +6,7 @@
 #include "SurfaceControl.h"
 #include <deque>
 
-typedef enum SurfaceType{ Regle, Parametrique };
+typedef enum SurfaceType{ Regle, Parametrique, Directed };
 
 class Surface :
     public Figure
@@ -25,12 +25,13 @@ class Surface :
 
         static Surface * exampleCasteljau();
         static Surface * exampleRegle();
+        static Surface * exampleDirected();
 
     protected:
         virtual void generatePointsAndFaces();
         void generatePointsRegle();
         void generateCarreParametrique();
-        void generateSurface();
+        void generateDirectedSurface();
 };
 
 #endif // SURFACE_H

@@ -106,7 +106,7 @@ int nParallels = 15;
 bool isTube = false;
 bool normalInverse = false;
 bool doubleSense = false;
-int selectedFigure = 5;
+int selectedFigure = 7;
 bool considerLigth = true;
 bool showControlPoints = false;
 
@@ -144,6 +144,13 @@ void createFigure()
             fControl = s->getSurfaceControl();
             f = s;
         }
+        break;
+        case 7:{
+            Surface * s = Surface::exampleDirected();
+            fControl = s->getSurfaceControl();
+            f = s;
+        }
+        break;
         default:    break;
     }
 
@@ -310,7 +317,7 @@ GLvoid window_key_down(unsigned char key, int x, int y)  //appuie des touches
         case 'h':
             width-=1.; createFigure(); glutPostRedisplay();
         break;
-        case '0':case '1':case '2':case '3':case '4':case '5':case '6':
+        case '0':case '1':case '2':case '3':case '4':case '5':case '6':case '7':
             selectedFigure = key-'0';
             createFigure(); glutPostRedisplay();
         break;
