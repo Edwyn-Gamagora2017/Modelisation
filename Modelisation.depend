@@ -47,16 +47,18 @@
 	"math.h"
 	"../../utils/utils.h"
 
-1511288682 source:c:\users\edwyn luis\documents\lyon\gamagora\modelisation_geometrique\projetos\modelisation\main.cpp
+1515104132 source:c:\users\edwyn luis\documents\lyon\gamagora\modelisation_geometrique\projetos\modelisation\main.cpp
 	<windows.h>
 	<string>
 	<iostream>
+	<typeinfo>
 	"figures/data_structure/vec3.h"
 	"figures/data_structure/Point3d.h"
 	"figures/data_structure/Figure.h"
 	"utils/utils.h"
 	"utils/OffFile.h"
 	"figures/Square.h"
+	"figures/Surface.h"
 	"GL\glut.h"
 	<stdio.h>
 	<math.h>
@@ -317,4 +319,151 @@
 
 1511207128 c:\users\edwyn luis\documents\lyon\gamagora\modelisation_geometrique\projetos\modelisation\figures\square.h
 	"data_structure/Figure.h"
+
+1511357029 source:d:\documents_edwyn\github\modelisation\figures\data_structure\edge.cpp
+	"Edge.h"
+
+1511357029 d:\documents_edwyn\github\modelisation\figures\data_structure\edge.h
+	"Point3d.h"
+	"FigureFace.h"
+	<deque>
+
+1511357029 d:\documents_edwyn\github\modelisation\figures\data_structure\point3d.h
+	"vec3.h"
+	"Edge.h"
+	<deque>
+	<string>
+
+1511357029 d:\documents_edwyn\github\modelisation\figures\data_structure\vec3.h
+	<string>
+
+1511357029 d:\documents_edwyn\github\modelisation\figures\data_structure\figureface.h
+	<deque>
+	"Point3d.h"
+
+1511357029 source:d:\documents_edwyn\github\modelisation\figures\data_structure\figure.cpp
+	"Figure.h"
+	<iostream>
+
+1511357029 d:\documents_edwyn\github\modelisation\figures\data_structure\figure.h
+	"vec3.h"
+	"Point3d.h"
+	"Edge.h"
+	"FigureFace.h"
+	<deque>
+
+1511357029 source:d:\documents_edwyn\github\modelisation\figures\data_structure\figureface.cpp
+	"FigureFace.h"
+	<math.h>
+	<iostream>
+
+1511357029 source:d:\documents_edwyn\github\modelisation\figures\data_structure\point3d.cpp
+	"Point3d.h"
+	"../../utils/utils.h"
+
+1511357029 d:\documents_edwyn\github\modelisation\utils\utils.h
+	<string>
+	<sstream>
+	<iostream>
+
+1511357029 source:d:\documents_edwyn\github\modelisation\figures\data_structure\vec3.cpp
+	"vec3.h"
+	"math.h"
+	"../../utils/utils.h"
+
+1511357029 source:d:\documents_edwyn\github\modelisation\figures\square.cpp
+	"Square.h"
+	"../utils/utils.h"
+
+1511357029 d:\documents_edwyn\github\modelisation\figures\square.h
+	"data_structure/Figure.h"
+
+1511770449 source:d:\documents_edwyn\github\modelisation\main.cpp
+	<windows.h>
+	<string>
+	<iostream>
+	<typeinfo>
+	"figures/data_structure/vec3.h"
+	"figures/data_structure/Point3d.h"
+	"figures/data_structure/Figure.h"
+	"utils/utils.h"
+	"utils/OffFile.h"
+	"figures/Square.h"
+	"figures/Surface.h"
+	"GL\glut.h"
+	<stdio.h>
+	<math.h>
+	<stdlib.h>
+	<GL/glut.h>
+
+1511357029 d:\documents_edwyn\github\modelisation\utils\offfile.h
+	"../figures/data_structure/Figure.h"
+	<string>
+
+1511357029 source:d:\documents_edwyn\github\modelisation\utils\offfile.cpp
+	"OffFile.h"
+	<iostream>
+	<fstream>
+	<deque>
+	<climits>
+	"utils.h"
+	"../figures/data_structure/vec3.h"
+	"../figures/data_structure/FigureFace.h"
+
+1511357029 source:d:\documents_edwyn\github\modelisation\utils\utils.cpp
+	"utils.h"
+
+1511371444 source:d:\documents_edwyn\github\modelisation\figures\data_structure\curve.cpp
+	"Curve.h"
+
+1511371393 d:\documents_edwyn\github\modelisation\figures\data_structure\curve.h
+	"vec3.h"
+	"Point3d.h"
+	<deque>
+
+1511426904 source:c:\users\edwyn luis\documents\lyon\gamagora\modelisation_geometrique\projetos\modelisation\figures\data_structure\curve.cpp
+	"Curve.h"
+
+1511426904 c:\users\edwyn luis\documents\lyon\gamagora\modelisation_geometrique\projetos\modelisation\figures\data_structure\curve.h
+	"vec3.h"
+	"Point3d.h"
+	<deque>
+
+1515104839 source:c:\users\edwyn luis\documents\lyon\gamagora\modelisation_geometrique\projetos\modelisation\figures\surface.cpp
+	"Surface.h"
+	<iostream>
+
+1515103727 c:\users\edwyn luis\documents\lyon\gamagora\modelisation_geometrique\projetos\modelisation\figures\surface.h
+	"data_structure/Figure.h"
+	"data_structure/Curve.h"
+	"SurfaceControl.h"
+	<deque>
+
+1511430859 source:c:\users\edwyn luis\documents\lyon\gamagora\modelisation_geometrique\projetos\modelisation\figures\surfacecontrol.cpp
+	"SurfaceControl.h"
+	<iostream>
+
+1511430695 c:\users\edwyn luis\documents\lyon\gamagora\modelisation_geometrique\projetos\modelisation\figures\surfacecontrol.h
+	"data_structure/Figure.h"
+	"data_structure/Curve.h"
+	<deque>
+
+1511770449 source:d:\documents_edwyn\github\modelisation\figures\surface.cpp
+	"Surface.h"
+	<iostream>
+
+1511770449 d:\documents_edwyn\github\modelisation\figures\surface.h
+	"data_structure/Figure.h"
+	"data_structure/Curve.h"
+	"SurfaceControl.h"
+	<deque>
+
+1511770449 d:\documents_edwyn\github\modelisation\figures\surfacecontrol.h
+	"data_structure/Figure.h"
+	"data_structure/Curve.h"
+	<deque>
+
+1511770449 source:d:\documents_edwyn\github\modelisation\figures\surfacecontrol.cpp
+	"SurfaceControl.h"
+	<iostream>
 
